@@ -21,6 +21,24 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/maintenance',
+    name: 'MaintenancePage',
+    component: loadPage('MaintenancePage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/yourgaragepage',
+    name: 'YourGaragePage',
+    component: loadPage('YourGaragePage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/YourCarPage',
+    name: 'YourCarPage',
+    component: loadPage('YourCarPage'),
+    beforeEnter: authGuard
   }
 ]
 

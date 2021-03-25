@@ -1,6 +1,6 @@
 import { logger } from './Logger'
 import io from 'socket.io-client'
-import { baseURL } from '../services/AxiosService'
+import { baseURL } from '../AxiosService'
 export class SocketHandler {
   /**
    * @param {String} url
