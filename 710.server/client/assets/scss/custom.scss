@@ -1,0 +1,24 @@
+@each $color, $value in $colors {
+  .bg-#{$color}{
+    color: color-yiq($value);
+    background-color: $value;
+  }
+}
+
+@each $color, $value in $colors {
+  @each $num, $val in $color-ranges{
+    .bg-#{$color}.darken-#{$num} {
+      color: color-yiq(darken($value, $num));
+      background-color: darken($value, $num);
+    }
+  }
+}
+
+@each $color, $value in $colors {
+  @each $num, $val in $color-ranges{
+    .bg-#{$color}.lighten-#{$num} {
+      color: color-yiq(lighten($value, $num));
+      background-color: lighten($value, $num);
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/style/main.css">
+    <title>client</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand bg-dark text-light">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/logo.png" width="45" height="45" alt="" loading="lazy">
+                <span class="ml-2">client</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                </div>
+            </div>
+            <div class="flex-grow-1 justify-content-end align-items-center d-flex" id="authstate"></div>
+        </nav>
+    </header>
+    <main class="container-fluid">
+        <div class="row my-3">
+            <div class="col-5">
+                <div class="card p-2 skeleton-loader">
+                    <div class="card-title p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="skeleton-loader avatar"></div>
+                            <div class="skeleton-loader text mx-2"></div>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <div class="skeleton-loader text block"></div>
+                        <div class="skeleton-loader text block"></div>
+                        <div class="skeleton-loader text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="container-fluid bg-dark text-light">
+        <div class="row text-center">
+            <div class="col">
+                <p><small>Made with love by Codeworks</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.11/auth0-spa-js.production.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/AuthProvider.browser.js"></script>
+    <script src="app/main.js" type="module"></script>
+</body>
+
+</html>

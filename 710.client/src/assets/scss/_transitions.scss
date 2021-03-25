@@ -1,0 +1,42 @@
+// Transitions
+
+// [+] ROUTER TRANSITION
+//   intentially empty by default
+//   if you want to enable router
+//   transtions change the settings below
+.route-enter-active,
+.route-leave-active {
+  transition: all 0s linear; // try changing 0s to .25s
+}
+.route-enter-from,
+.route-leave-to {
+  opacity: 1; // try setting to 0
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.slideY-enter-active,
+.slideY-leave-active {
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
+.slideY-enter-from,
+.slideY-leave-to {
+  transform: translateY(100vh);
+}
+.slideX-enter-active,
+.slideX-leave-active {
+  transform: translateX(0);
+  transition: all 0.5s ease;
+}
+.slideX-enter-from,
+.slideX-leave-to {
+  transform: translateX(100vw);
+}

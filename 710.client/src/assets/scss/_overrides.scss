@@ -1,0 +1,6 @@
+.btn-primary {
+  color: $light;
+  background-color: $primary;
+  border-color: darken($color: $primary, $amount: 10);
+  border-width: medium;
+}
