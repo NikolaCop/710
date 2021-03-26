@@ -23,7 +23,7 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/maintenance',
+    path: '/MaintenancePage',
     name: 'MaintenancePage',
     component: loadPage('MaintenancePage'),
     beforeEnter: authGuard
