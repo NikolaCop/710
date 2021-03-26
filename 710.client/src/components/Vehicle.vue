@@ -4,7 +4,7 @@
       <div class="col-12">
         <p>hullo</p>
         <h3>
-          {{ vehicleProp.make }}
+          {{ vehicle.make }}
         </h3>
       </div>
     </div>

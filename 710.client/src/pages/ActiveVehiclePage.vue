@@ -20,7 +20,7 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
-      vehicle: computed(() => AppState.vehicle),
+      vehicle: computed(() => AppState.activeVehicle),
       user: computed(() => AppState.user)
     })
 

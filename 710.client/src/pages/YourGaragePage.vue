@@ -8,6 +8,12 @@
           </div>
         </div>
       </div>
+      <div>
+        <button class="" type="button" id="createVehicle" data-toggle="modal" data-target="#add-vehicle">
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </button>
+        <AddVehicleModal />
+      </div>
       <div class="row">
         <div class="col-12 text-center my-2">
           <!-- vfor every car -->
@@ -34,6 +40,7 @@ export default {
     const state = reactive({
 
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
       vehicles: computed(() => AppState.vehicles)
     })
 
@@ -41,7 +48,13 @@ export default {
       await vehicleService.getAllVehicles()
     })
     return {
-      state
+      state,
+      async createVehicle() {
+        state.newVehicle.vehicles = state.vehicles
+        state.newVehicle.user = state.user
+        await vehicleService.createVehicle(state.newVehicle)
+        state.newVehicle = {}
+      }
     }
   },
   components: {}
