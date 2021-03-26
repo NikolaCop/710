@@ -35,9 +35,15 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/YourCarPage',
+    path: '/YourCarPage/:id',
     name: 'YourCarPage',
     component: loadPage('YourCarPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/ActiveVehiclePage',
+    name: 'ActiveVehiclePage',
+    component: loadPage('ActiveVehiclePage'),
     beforeEnter: authGuard
   }
 ]

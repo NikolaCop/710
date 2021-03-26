@@ -16,7 +16,7 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <router-link :to="{name: 'YourGaragePage', params: { id: id }}">
+        <router-link :to="{name: 'YourGaragePage'}">
           <button type="button" class="btn btn-light">
             To Garage Page
           </button>

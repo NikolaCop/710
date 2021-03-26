@@ -54,6 +54,15 @@
           </button>
         </div>
       </div>
+      <div class="row p-3">
+        <div class="col-6">
+          <router-link :to="{name: 'ActiveVehiclePage', params: { id: id }}">
+            <button type="button" id="tile" class="btn btn-primary">
+              Active Vehicle
+            </button>
+          </router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>

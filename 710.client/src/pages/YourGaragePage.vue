@@ -10,16 +10,9 @@
       </div>
       <div class="row">
         <div class="col-12 text-center my-2">
-          <router-link :to="{name: 'YourCarPage', params: { id: id }}">
-            <button type="button" class="btn btn-primary">
-              <img src="https://crls.io/s/evox%2Fcolor_2400_001_png%2FMY2020%2F14061%2F14061_cc2400_001_H2.png/feature/n/porsche-911.png" id="carPicButton" alt="">
-            </button>
-          </router-link>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 text-center my-2">
-          <router-link :to="{name: 'YourCarPage', params: { id: id }}">
+          <!-- vfor every car -->
+
+          <router-link :to="{name: 'YourCarPage', params: { id: vehicle.id }}" v-for="vehicle in state.vehicles" :key="vehicle.id">
             <button type="button" class="btn btn-primary">
               <img src="https://crls.io/s/evox%2Fcolor_2400_001_png%2FMY2020%2F14061%2F14061_cc2400_001_H2.png/feature/n/porsche-911.png" id="carPicButton" alt="">
             </button>
@@ -31,15 +24,21 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { vehicleService } from '../services/VehicleService'
 export default {
   name: 'YourGaragePage',
   props: [],
   setup() {
     const state = reactive({
 
-      user: computed(() => AppState.user)
+      user: computed(() => AppState.user),
+      vehicles: computed(() => AppState.vehicles)
+    })
+
+    onMounted(async() => {
+      await vehicleService.getAllVehicles()
     })
     return {
       state
@@ -50,8 +49,8 @@ export default {
 </script>
 <style scoped>
 #carPicButton {
-  width: 500px;
-  height: 300px;
+  width: 530px;
+  height: 280px;
 }
 
 </style>
