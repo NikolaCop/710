@@ -1,10 +1,15 @@
 import mongoose from 'mongoose'
-import ValueSchema from '../models/Value'
+import VehicleSchema from '../models/Vehicle'
 import AccountSchema from '../models/Account'
+import MaintenanceSchema from '../models/Maintenance'
+import RecordSchema from '../models/Record'
 
 class DbContext {
-  Values = mongoose.model('Value', ValueSchema);
+  Vehicle = mongoose.model('Vehicle', VehicleSchema);
   Account = mongoose.model('Account', AccountSchema);
+
+  Maintenance = mongoose.model('Maintenance', MaintenanceSchema);
+  Record = mongoose.model('Record', RecordSchema)
 }
 
 export const dbContext = new DbContext()
