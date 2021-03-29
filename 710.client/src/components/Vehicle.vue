@@ -4,7 +4,7 @@
       <router-link :to="{name: 'YourVehiclePage', params: { id: vehicle.id }}">
         <div class="col-12">
           <h3>
-            {{ vehicle.make }}
+            {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
           </h3>
         </div>
       </router-link>

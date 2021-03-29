@@ -1,8 +1,8 @@
 <template>
-  <div class="AddVehicleModal">
+  <div class="edit-vehicle-modal">
     <div
       class="modal fade"
-      id="add-vehicle"
+      id="edit-vehicle"
       tabindex="-1"
       role="dialog"
       aria-labelledby="modelTitleId"
@@ -12,7 +12,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">
-              Add a Vehicle
+              Edit vehicle
             </h5>
             <button
               type="button"
@@ -24,16 +24,27 @@
             </button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="createVehicle">
+            <form @submit.prevent="editVehicle">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="year"
+                  id="year"
+                  class="form-control"
+                  placeholder="Enter Year..."
+                  aria-describedby="helpId"
+                  v-model="state.vehicle.year"
+                />
+              </div>
               <div class="form-group">
                 <input
                   type="text"
                   name="make"
                   id="make"
                   class="form-control"
-                  placeholder="Enter Make..."
+                  placeholder="Enter make..."
                   aria-describedby="helpId"
-                  v-model="state.newVehicle.make"
+                  v-model="state.vehicle.make"
                 />
               </div>
               <div class="form-group">
@@ -44,18 +55,7 @@
                   class="form-control"
                   placeholder="Enter Model..."
                   aria-describedby="helpId"
-                  v-model="state.newVehicle.model"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="year"
-                  id="year"
-                  class="form-control"
-                  placeholder="Enter Year..."
-                  aria-describedby="helpId"
-                  v-model="state.newVehicle.year"
+                  v-model="state.vehicle.model"
                 />
               </div>
               <div class="form-group">
@@ -64,25 +64,22 @@
                   name="mileage"
                   id="mileage"
                   class="form-control"
-                  placeholder="Enter mileage..."
+                  placeholder="Enter Mileage..."
                   aria-describedby="helpId"
-                  v-model="state.newVehicle.mileage"
                 />
               </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="VIN"
-                  id="VIN"
-                  class="form-control"
-                  placeholder="Enter VIN..."
-                  aria-describedby="helpId"
-                  v-model="state.newVehicle.vin"
-                />
-              </div>
+              <input
+                type="text"
+                name="vin"
+                id="vin"
+                class="form-control"
+                placeholder="Enter VIN..."
+                aria-describedby="helpId"
+                v-model="state.vehicle.vin"
+              />
               <div class="modal-footer justify-content-center">
                 <button type="submit" class="btn btn-success">
-                  Create
+                  Edit
                 </button>
               </div>
             </form>
@@ -95,36 +92,31 @@
 
 <script>
 import { reactive, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import { vehicleService } from '../services/VehicleService'
 import $ from 'jquery'
-import { logger } from '../services/utils/Logger'
 import { AppState } from '../AppState'
 export default {
-  name: 'AddVehicleModal',
+  name: 'EditVehicleModal',
   setup() {
-    const router = useRouter()
     const state = reactive({
       user: computed(() => AppState.user),
-      newVehicle: {}
+      vehicle: computed(() => AppState.activeVehicle)
     })
     return {
       state,
-      async createVehicle() {
-        try {
-          $('#add-vehicle').modal('hide')
-          state.newVehicle.creatorId = state.user._id
-          state.newVehicle.owner = state.user._id
-          const vehicleId = await vehicleService.createVehicle(state.newVehicle)
-          router.push({ name: 'YourVehiclePage', params: { id: vehicleId } })
-          state.newVehicle = {}
-          logger.log(AppState.vehicles)
-        } catch (error) {
-          logger.log(error)
+      async editVehicle(e) {
+        $('#edit-vehicle').modal('hide')
+        const form = e.target
+        if (form.mileage.value === '' || null) {
+          return state.vehicle.mileage
+        } else if (form.mileage.value >= state.vehicle.mileage) {
+          state.vehicle.mileage = form.mileage.value
+        } else {
+          window.alert('Mileage Edit Must Be An Increase')
         }
+        await vehicleService.editVehicle(state.vehicle, state.vehicle.id)
       }
     }
-  },
-  components: {}
+  }
 }
 </script>

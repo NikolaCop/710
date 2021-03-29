@@ -8,13 +8,27 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-12">
-          {{ state.vehicle }}
+      <div class="row">
+        <div class="col-12 col-md-5 order-md-last">
+          <img src="https://crls.io/s/evox%2Fcolor_2400_001_png%2FMY2020%2F14061%2F14061_cc2400_001_H2.png/feature/n/porsche-911.png" id="carPic" alt="">
         </div>
-      </div>
-      <div class="row justify-content-center">
-        <img src="https://crls.io/s/evox%2Fcolor_2400_001_png%2FMY2020%2F14061%2F14061_cc2400_001_H2.png/feature/n/porsche-911.png" id="carPic" alt="">
+        <div class="col-12 col-md-5 d-flex align-items-center">
+          <div class="card bg-primary">
+            <div class="card-header">
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit-vehicle">
+                Edit
+              </button>
+              <EditVehicleModal />
+              <h2>{{ state.vehicle.year }} {{ state.vehicle.make }} {{ state.vehicle.model }}</h2>
+              <h4>
+                Miles: {{ state.vehicle.mileage }}
+              </h4>
+              <h4>VIN: {{ state.vehicle.vin }}</h4>
+              <i class="fa fa-camera" aria-hidden="true" type="button" data-toggle="modal" data-target="#upload-image"></i>
+              <UploadImageModal />
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row p-3">
         <div class="col-6">
@@ -72,6 +86,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { vehicleService } from '../services/VehicleService'
 import { useRoute } from 'vue-router'
+import { logger } from '../services/utils/Logger'
 export default {
   name: 'Yourvehiclepage',
   props: {
@@ -85,6 +100,7 @@ export default {
     const route = useRoute()
     onMounted(async() => {
       await vehicleService.getVehicle(route.params.id)
+      logger.log(AppState.activeVehicle)
     })
     return {
       state,

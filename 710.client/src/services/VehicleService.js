@@ -49,5 +49,9 @@ class VehicleService {
   async archiveVehicle(id) {
     await api.delete(`api/vehicles/${id}`)
   }
+
+  async addImage(imageData, vehicleId) {
+    logger.log(imageData, vehicleId)
+  }
 }
 export const vehicleService = new VehicleService()
