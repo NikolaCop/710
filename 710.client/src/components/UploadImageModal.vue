@@ -30,12 +30,6 @@
                 <input type="file" @change="previewImage" accept="image/*" />
               </div>
               <div>
-                <p>
-                  Progress: {{ state.uploadValue.toFixed() + "%" }}
-                  <progress :value="state.uploadValue" max="100"></progress>
-                </p>
-              </div>
-              <div>
                 <img class="preview" :src="state.picture" />
                 <br />
                 <button @click="onUpload">
@@ -54,10 +48,10 @@
 import { reactive, computed } from 'vue'
 import { vehicleService } from '../services/VehicleService'
 // import $ from 'jquery'
-import { logger } from '../services/utils/Logger'
+// import { logger } from '../services/utils/Logger'
 import { AppState } from '../AppState'
-import firebase from 'firebase'
-// import uploadImage from '../ImageUploader'
+import uploadImage from '../ImageUploader'
+import { logger } from '../services/utils/Logger'
 export default {
   name: 'UploadImageModal',
   setup() {
@@ -66,7 +60,8 @@ export default {
       vehicle: computed(() => AppState.activeVehicle),
       imageData: null,
       picture: '',
-      uploadValue: 0
+      uploadValue: 0,
+      path: 'vehicleImages'
     })
     return {
       state,
@@ -76,20 +71,12 @@ export default {
         state.imageData = event.target.files[0]
       },
       async onUpload() {
-        const storageRef = await firebase.storage().ref(`images/${state.imageData.name}`).put(state.imageData)
-        storageRef.on('state_changed', snapshot => {
-          state.uploadValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        }, error => {
-          logger.log(error.message)
-        }, () => {
-          state.uploadValue = 100
-          // setTimeout(pause, 2000)
-        }, storageRef.snapshot.ref.getDownloadURL().then((url) => {
-          state.picture = url
-          const newImage = { name: `${state.imageData.name.replace(' ', '-')}`, url: `${state.picture}` }
-          vehicleService.addImage(newImage, state.vehicle.id)
-        })
-        )
+        const res = await uploadImage(state.imageData, state.path)
+        // const newImage = { name: `${res.snapshot.ref.name.replace(' ', '-')}`, url: `${res.url}` }
+        // NOTE figure out how to push url into images property on vehicle schema
+        const editedVehicle = state.vehicle.images.push(res.url)
+        logger.log(editedVehicle)
+        await vehicleService.addImage(editedVehicle, state.vehicle.id)
       }
     }
 
