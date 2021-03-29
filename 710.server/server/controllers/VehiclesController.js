@@ -56,7 +56,7 @@ export class VehiclesController extends BaseController {
 
   async getAllVehicles(req, res, next) {
     try {
-      return res.send(await vehiclesService.find(req.query))
+      return res.send(await vehiclesService.find({ creatorId: req.userInfo.id }))
     } catch (error) {
       next(error)
     }

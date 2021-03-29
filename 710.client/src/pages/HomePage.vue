@@ -3,11 +3,7 @@
     <div class="row justify-content-center height-welcome">
       <div class="col-xs-12 text-center text-white">
         <h3 class="welcome-size">
-<<<<<<< HEAD
-          Welcome to 710
-=======
           Welcome to <b class="text-primary seventen"> 710 </b>
->>>>>>> ae0d371f50d31ef812b8cc470231051ec1cbef43
         </h3>
       </div>
     </div>
