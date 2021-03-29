@@ -11,7 +11,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-1 margin-left">
+      <div class="col-1 ml-3 text-center mt-3 text-light">
+        <router-link :to="{ name: 'Home' }">
+          <h3><i class="fa fa-home text-light " aria-hidden="true"></i></h3>
+        </router-link>
+      </div>
+      <div class="col-2">
         <h1 class="text-light text-center mt-1">
           <button
             class="navbar-toggler text-light"
@@ -22,12 +27,12 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <h2>710</h2>
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
             <span class="navbar-toggler-icon" />
           </button>
         </h1>
       </div>
-      <div class="collapse ml-2 mt-2 col-10 text-right navbar-collapse" id="navbarText">
+      <div class="collapse ml-2 mt-2 col-7 text-right navbar-collapse" id="navbarText">
         <span class="navbar-text">
           <button
             class="btn btn-outline-primary text-uppercase"
@@ -122,17 +127,17 @@ a:hover {
 }
 .card-navbar-blue{
   width: 20px;
-  height: 15px;
+  height: 5px;
   border-radius: 5rem;
 }
 .card-navbar-white{
   width: 20px;
-  height: 15px;
+  height: 5px;
   border-radius: 5rem;
 }
 .card-navbar-primary{
   width: 250px;
-  height: 15px;
+  height: 5px;
   border-radius: 5rem;
 }
 @media (min-width: 576px) {
