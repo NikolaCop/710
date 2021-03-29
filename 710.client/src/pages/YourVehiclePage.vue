@@ -3,28 +3,42 @@
     <div class="Yourvehiclepage text-white">
       <div class="row">
         <div class="col-12 text-center">
-          <div class="card bg-primary">
-            Your Vehicle Page
-          </div>
+          <div class="card bg-primary">Your Vehicle Page</div>
         </div>
       </div>
       <div class="row">
         <div class="col-12 col-md-5 order-md-last">
-          <img src="https://crls.io/s/evox%2Fcolor_2400_001_png%2FMY2020%2F14061%2F14061_cc2400_001_H2.png/feature/n/porsche-911.png" id="carPic" alt="">
+          <img
+            src="https://crls.io/s/evox%2Fcolor_2400_001_png%2FMY2020%2F14061%2F14061_cc2400_001_H2.png/feature/n/porsche-911.png"
+            id="carPic"
+            alt=""
+          />
         </div>
         <div class="col-12 col-md-5 d-flex align-items-center">
           <div class="card bg-primary">
             <div class="card-header">
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit-vehicle">
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-toggle="modal"
+                data-target="#edit-vehicle"
+              >
                 Edit
               </button>
               <EditVehicleModal />
-              <h2>{{ state.vehicle.year }} {{ state.vehicle.make }} {{ state.vehicle.model }}</h2>
-              <h4>
-                Miles: {{ state.vehicle.mileage }}
-              </h4>
+              <h2>
+                {{ state.vehicle.year }} {{ state.vehicle.make }}
+                {{ state.vehicle.model }}
+              </h2>
+              <h4>Miles: {{ state.vehicle.mileage }}</h4>
               <h4>VIN: {{ state.vehicle.vin }}</h4>
-              <i class="fa fa-camera" aria-hidden="true" type="button" data-toggle="modal" data-target="#upload-image"></i>
+              <i
+                class="fa fa-camera"
+                aria-hidden="true"
+                type="button"
+                data-toggle="modal"
+                data-target="#upload-image"
+              ></i>
               <UploadImageModal />
             </div>
           </div>
@@ -32,7 +46,9 @@
       </div>
       <div class="row p-3">
         <div class="col-6">
-          <router-link :to="{name: 'MaintenancePage', params: { id: id }}">
+          <router-link
+            :to="{ name: 'MaintenanceHistoryPage', params: { id: id } }"
+          >
             <button type="button" id="tile" class="btn btn-primary">
               Maintenance
             </button>
@@ -58,9 +74,7 @@
       </div>
       <div class="row p-3">
         <div class="col-6">
-          <button type="button" id="tile" class="btn btn-primary">
-            Tires
-          </button>
+          <button type="button" id="tile" class="btn btn-primary">Tires</button>
         </div>
         <div class="col-6">
           <button type="button" id="tile" class="btn btn-primary">
@@ -70,7 +84,7 @@
       </div>
       <div class="row p-3">
         <div class="col-6">
-          <router-link :to="{name: 'ActiveVehiclePage', params: { id: id }}">
+          <router-link :to="{ name: 'ActiveVehiclePage', params: { id: id } }">
             <button type="button" id="tile" class="btn btn-primary">
               Active Vehicle
             </button>
@@ -98,7 +112,7 @@ export default {
       vehicle: computed(() => AppState.activeVehicle)
     })
     const route = useRoute()
-    onMounted(async() => {
+    onMounted(async () => {
       await vehicleService.getVehicle(route.params.id)
       logger.log(AppState.activeVehicle)
     })
@@ -113,12 +127,12 @@ export default {
 
 </script>
 <style scoped>
-#tile{
+#tile {
   width: 200px;
   height: 200px;
   border-radius: 35px;
 }
-#carPic{
+#carPic {
   height: 353px;
   width: 673px;
 }

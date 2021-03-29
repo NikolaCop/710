@@ -68,7 +68,7 @@
                 />
               </div>
               <div class="modal-footer justify-content-center">
-                <button class="btn btn-primary" @click="addMaintenance">
+                <button class="btn btn-primary" type="submit">
                   <i class="fa fa-plus-square" aria-hidden="true"></i>
                 </button>
               </div>
