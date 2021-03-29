@@ -1,9 +1,13 @@
 <template>
-  <div class="container-fluid bg-dark">
+  <div class="container-fluid bg-dark img-paint" id="img-paint">
     <div class="row justify-content-center height-welcome">
       <div class="col-xs-12 text-center text-white">
         <h3 class="welcome-size">
+<<<<<<< HEAD
           Welcome to 710
+=======
+          Welcome to <b class="text-primary seventen"> 710 </b>
+>>>>>>> ae0d371f50d31ef812b8cc470231051ec1cbef43
         </h3>
       </div>
     </div>
@@ -11,42 +15,42 @@
       <div class="col-xs-10 col-sm-9 col-md-8 col-lg-7 col-xl-5">
         <router-link :to="{name: 'YourCarPage', params: { id: id }}">
           <div class="card align-items-center bg-primary vehicle-rounded">
-            <img src="../assets/img/porsche.png" class="card-img-top w-50 img-fluid" id="carPicButton" alt="">
+            <img src="../assets/img/porsche.png" class="card-img-top w-50 img-fluid animate__animated animate__fadeInLeft" id="carPicButton" alt="">
           </div>
         </router-link>
       </div>
     </div>
     <div class="row">
       <div class="col-12 text-center mt-5">
-        <h6 class="text-light pam-size">
-          Personal <span class="text-primary">Auto</span> Maintenance <span class="text-primary">Application</span>
+        <h6 class="text-warning pam-size fancy">
+          Personal Auto Maintenance Application
         </h6>
       </div>
     </div>
     <div v-if="state.user.isAuthenticated" class="row button-row-height justify-content-center">
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'YourGaragePage', params: { id: id }}">
-          <button type="button" class="btn btn-light text-font-weight button-rounded-garage">
+          <button type="button" class="btn btn-info text-font-weight button-rounded-garage">
             Garage Page
           </button>
         </router-link>
       </div>
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'Account', params: { id: id }}">
-          <button type="button" class="btn btn-light text-font-weight button-rounded-account">
+          <button type="button" class="btn btn-info text-font-weight button-rounded-account">
             Account Page
           </button>
         </router-link>
       </div>
     </div>
     <div v-else class="row button-row-height justify-content-center">
-      <div class="col-5 text-center">
-        <button type="button" class="btn btn-light text-font-weight button-rounded-garage">
+      <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
+        <button type="button" @click="login" class="btn btn-info text-font-weight button-rounded-garage">
           Sign Up
         </button>
       </div>
-      <div class="col-5 text-center">
-        <button type="button" class="btn btn-light text-font-weight button-rounded-account">
+      <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
+        <button type="button" @click="login" class="btn btn-info text-font-weight button-rounded-account">
           Log In
         </button>
       </div>
@@ -55,8 +59,11 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
+import 'animate.css'
+import { animationService } from '../services/AnimationService'
+import { AuthService } from '../services/AuthService'
 
 export default {
   name: 'Home',
@@ -64,26 +71,34 @@ export default {
     const state = reactive({
       user: computed(() => AppState.user)
     })
+    onMounted(async() => { await animationService.personalAutomation() })
+    onMounted(() => { animationService.sevenTenAutomation() })
     return {
-      state
+      state,
+      async login() {
+        AuthService.loginWithPopup()
+      }
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-// .home{
-//   text-align: center;
-//   user-select: none;
-//   > img{
-//     height: 200px;
-//     width: 200px;
-//   }
-//   #carPicButton{
-//   height: 150px;
-//   width: 300px;
-//   }
-// }
+span{
+  opacity: 0!important;
+  transition: all 0.1s ease!important;
+}
+span.fadeText{
+  opacity: 1!important;
+}
+@media (min-width: 1240px) {
+.img-paint{
+  background-image: url('../assets/img/final7.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+}
+
 .vehicle-rounded{
   border-radius: 8rem;
 }

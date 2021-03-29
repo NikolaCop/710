@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "@bcwdev/auth0provider-client": "0.0.3",
+    "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "install": "^0.13.0",
     "jquery": "^3.5.1",
+    "npm": "^7.7.5",
     "popper.js": "^1.16.1",
     "socket.io-client": "^2.2.0",
     "vue": "^3.0.5",
