@@ -44,6 +44,9 @@
           </div>
         </div>
       </div>
+      <div>
+        <img :src="state.vehicle.images" alt="">
+      </div>
       <div class="row p-3">
         <div class="col-6">
           <router-link

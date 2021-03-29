@@ -50,8 +50,14 @@ class VehicleService {
     await api.delete(`api/vehicles/${id}`)
   }
 
-  async addImage(imageData, vehicleId) {
-    logger.log(imageData, vehicleId)
+  async addImage(editedVehicle, vehicleId) {
+    try {
+      const res = await api.put('api/vehicles/' + vehicleId, editedVehicle)
+      AppState.activeVehicle = res.data
+      logger.log(AppState.activeVehicle)
+    } catch (error) {
+      logger.log(error)
+    }
   }
 }
 export const vehicleService = new VehicleService()
