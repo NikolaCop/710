@@ -23,15 +23,9 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/maintenancehistorypage',
-    name: 'MaintenanceHistoryPage',
-    component: loadPage('MaintenanceHistoryPage'),
-    beforeEnter: authGuard
-  },
-  {
-    path: '/maintenancedetailspage/:id',
-    name: 'MaintenanceDetailsPage',
-    component: loadPage('MaintenanceDetailsPage'),
+    path: '/maintenancepage',
+    name: 'MaintenancePage',
+    component: loadPage('MaintenancePage'),
     beforeEnter: authGuard
   },
   {
@@ -41,13 +35,13 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/yourcarpage/:id',
-    name: 'YourCarPage',
-    component: loadPage('YourCarPage'),
+    path: '/yourvehiclepage/:id',
+    name: 'YourVehiclePage',
+    component: loadPage('YourVehiclePage'),
     beforeEnter: authGuard
   },
   {
-    path: '/activevehiclepage',
+    path: '/activevehiclepage/:id',
     name: 'ActiveVehiclePage',
     component: loadPage('ActiveVehiclePage'),
     beforeEnter: authGuard

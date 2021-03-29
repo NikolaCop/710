@@ -2,8 +2,10 @@
   <div class="active-vehicle-page containter-fluid">
     <div class="col-12">
       <h2>Active Vehicle Page</h2>
-      <p>{{ state.vehicle.make }}</p>
-      <Vehicle v-for="vehicle in state.vehicle" :key="vehicle.id" :vehicle="vehicle" />
+      <div class="col-12 col-md-6 card align-items-center bg-primary vehicle-rounded">
+        <img src="../assets/img/porsche.png" class="card-img-top w-50 img-fluid" id="carPicButton" alt="">
+      </div>
+      <p>{{ state.vehicle }}</p>
     </div>
     <div class="button">
     </div>
@@ -15,6 +17,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { vehicleService } from '../services/VehicleService'
 import { useRoute } from 'vue-router'
+import { logger } from '../services/utils/Logger'
 export default {
   name: 'ActiveVehiclePage',
   setup() {
@@ -26,13 +29,18 @@ export default {
 
     onMounted(async() => {
       await vehicleService.getVehicle(route.params.id)
-      console.log(AppState.vehicle)
+      logger.log(AppState.vehicle)
     })
     return {
       state,
       route
     }
-  },
-  components: {}
+  }
 }
 </script>
+
+<style scoped>
+.vehicle-rounded{
+  border-radius: 8rem;
+}
+</style>
