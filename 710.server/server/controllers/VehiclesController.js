@@ -7,10 +7,10 @@ export class VehiclesController extends BaseController {
   constructor() {
     super('api/vehicles')
     this.router
-      .get('', this.getAllVehicles)
       .get('/:id/maintenance', this.getAllMaintenanceByVehicleId)
-      // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
+    // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('', this.getAllVehicles)
       .get('/:id', this.getVehicleById)
       .post('', this.createVehicle)
       .put('/:id', this.editVehicle)
@@ -56,7 +56,7 @@ export class VehiclesController extends BaseController {
 
   async getAllVehicles(req, res, next) {
     try {
-      return res.send(await vehiclesService.find(req.query))
+      return res.send(await vehiclesService.find({ creatorId: req.userInfo.id }))
     } catch (error) {
       next(error)
     }

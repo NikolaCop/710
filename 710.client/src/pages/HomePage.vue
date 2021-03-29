@@ -3,21 +3,17 @@
     <div class="row justify-content-center height-welcome">
       <div class="col-xs-12 text-center text-white">
         <h3 class="welcome-size">
-<<<<<<< HEAD
-          Welcome to 710
-=======
           Welcome to <b class="text-primary seventen"> 710 </b>
->>>>>>> ae0d371f50d31ef812b8cc470231051ec1cbef43
         </h3>
       </div>
     </div>
     <div class="row p-3 justify-content-center">
       <div class="col-xs-10 col-sm-9 col-md-8 col-lg-7 col-xl-5">
-        <router-link :to="{name: 'YourCarPage', params: { id: id }}">
-          <div class="card align-items-center bg-primary vehicle-rounded">
-            <img src="../assets/img/porsche.png" class="card-img-top w-50 img-fluid animate__animated animate__fadeInLeft" id="carPicButton" alt="">
-          </div>
-        </router-link>
+        <!-- <router-link :to="{name: 'YourVehiclePage', params: { id: id }}"> -->
+        <div class="card align-items-center bg-primary vehicle-rounded">
+          <img src="../assets/img/porsche.png" class="card-img-top w-50 img-fluid animate__animated animate__fadeInLeft" id="carPicButton" alt="">
+        </div>
+        <!-- </router-link> -->
       </div>
     </div>
     <div class="row">

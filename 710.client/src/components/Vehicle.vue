@@ -1,12 +1,13 @@
 <template>
-  <div class="Vehicle">
+  <div class="col-12 Vehicle text-white">
     <div class="row">
-      <div class="col-12">
-        <p>hullo</p>
-        <h3>
-          {{ vehicle.make }}
-        </h3>
-      </div>
+      <router-link :to="{name: 'YourVehiclePage', params: { id: vehicle.id }}">
+        <div class="col-12">
+          <h3>
+            {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+          </h3>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -22,7 +23,7 @@ export default {
   setup() {
     const state = reactive({
       user: computed(() => AppState.user),
-      vehicle: computed(() => AppState.vehicle)
+      vehicles: computed(() => AppState.vehicles)
     })
     return {
       state

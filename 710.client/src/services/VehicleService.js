@@ -6,10 +6,15 @@ class VehicleService {
   async getAllVehicles() {
     try {
       const res = await api.get('api/vehicles')
-      AppState.vehicle = res.data
+      AppState.vehicles = res.data
     } catch (error) {
       logger.log(error)
     }
+  }
+
+  async getUserVehicles() {
+    const res = await api.get('account')
+    logger.log(res.data)
   }
 
   async getVehicle(id) {
@@ -43,6 +48,10 @@ class VehicleService {
 
   async archiveVehicle(id) {
     await api.delete(`api/vehicles/${id}`)
+  }
+
+  async addImage(imageData, vehicleId) {
+    logger.log(imageData, vehicleId)
   }
 }
 export const vehicleService = new VehicleService()

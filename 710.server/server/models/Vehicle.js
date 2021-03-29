@@ -10,7 +10,9 @@ const Vehicle = new Schema(
     vin: { type: String, required: true },
     archived: { type: Boolean, default: false, required: true },
     creatorId: { type: String, required: true },
-    ownerId: { type: String }
+    ownerId: { type: String },
+    images: { type: Object },
+    avatar: { type: String }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
