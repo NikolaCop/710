@@ -17,7 +17,7 @@ import { AppState } from '../AppState'
 export default {
   name: 'Vehicle',
   props: {
-    vehicleProp: { type: Object, required: true }
+    vehicle: { type: Object, required: true }
   },
   setup() {
     const state = reactive({

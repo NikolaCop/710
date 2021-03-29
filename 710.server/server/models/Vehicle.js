@@ -7,7 +7,7 @@ const Vehicle = new Schema(
     model: { type: String, required: true },
     year: { type: Number, required: true },
     mileage: { type: Number, required: true },
-    VIN: { type: String, required: true },
+    vin: { type: String, required: true },
     archived: { type: Boolean, default: false, required: true },
     creatorId: { type: String, required: true },
     ownerId: { type: String }

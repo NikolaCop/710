@@ -24,7 +24,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="addVehicle">
+            <form @submit.prevent="createVehicle">
               <div class="form-group">
                 <input
                   type="text"
@@ -77,15 +77,15 @@
                   class="form-control"
                   placeholder="Enter VIN..."
                   aria-describedby="helpId"
-                  v-model="state.newVehicle.VIN"
+                  v-model="state.newVehicle.vin"
                 />
               </div>
+              <div class="modal-footer justify-content-center">
+                <button type="submit" class="btn btn-success">
+                  Create
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="modal-footer justify-content-center">
-            <button class="btn btn-success" @click="addVehicle">
-              Create
-            </button>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { vehicleService } from '../services/VehicleService'
 import $ from 'jquery'
@@ -105,18 +105,20 @@ export default {
   setup() {
     const router = useRouter()
     const state = reactive({
+      user: computed(() => AppState.user),
       newVehicle: {}
     })
     return {
       state,
-      async addVehicle() {
+      async createVehicle() {
         try {
-          const vehicleId = await vehicleService.createVehicle(state.newVehicle)
           $('#add-vehicle').modal('hide')
-          state.newVehicle.user = state.user
+          state.newVehicle.creatorId = state.user._id
+          state.newVehicle.owner = state.user._id
+          const vehicleId = await vehicleService.createVehicle(state.newVehicle)
           router.push({ name: 'ActiveVehiclePage', params: { id: vehicleId } })
           state.newVehicle = {}
-          logger.log(AppState.vehicle)
+          logger.log(AppState.vehicles)
         } catch (error) {
           logger.log(error)
         }

@@ -2,7 +2,9 @@
   <div class="container-fluid bg-dark">
     <div class="row justify-content-center height-welcome">
       <div class="col-xs-12 text-center text-white">
-        <h3 class="welcome-size">Welcome to 710</h3>
+        <h3 class="welcome-size">
+          Welcome to 710
+        </h3>
       </div>
     </div>
     <div class="row p-3 justify-content-center">

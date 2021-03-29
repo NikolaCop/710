@@ -2,8 +2,10 @@
   <div class="active-vehicle-page containter-fluid">
     <div class="col-12">
       <h2>Active Vehicle Page</h2>
-      <p>{{ state.vehicle.make }}</p>
-      <Vehicle v-for="vehicle in state.vehicle" :key="vehicle.id" :vehicle="vehicle" />
+      <div class="col-12 col-md-6 card align-items-center bg-primary vehicle-rounded">
+        <img src="../assets/img/porsche.png" class="card-img-top w-50 img-fluid" id="carPicButton" alt="">
+      </div>
+      <p>{{ state.vehicle }}</p>
     </div>
     <div class="button">
     </div>
@@ -32,7 +34,12 @@ export default {
       state,
       route
     }
-  },
-  components: {}
+  }
 }
 </script>
+
+<style scoped>
+.vehicle-rounded{
+  border-radius: 8rem;
+}
+</style>
