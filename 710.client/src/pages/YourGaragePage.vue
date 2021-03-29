@@ -15,7 +15,7 @@
         <AddVehicleModal />
       </div>
       <div class="row">
-        <UserVehicles v-for="vehicle in state.userVehicles" :key="vehicle" :vehicle="vehicle" />
+        <Vehicle v-for="vehicle in state.vehicles" :key="vehicle.id" :vehicle="vehicle" />
       </div>
     </div>
   </div>
@@ -32,12 +32,11 @@ export default {
     const state = reactive({
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-      vehicles: computed(() => AppState.vehicles),
-      userVehicles: computed(() => AppState.userVehicles)
+      vehicles: computed(() => AppState.vehicles)
     })
 
     onMounted(async() => {
-      await vehicleService.getAllVehicles(state.user._id)
+      await vehicleService.getAllVehicles()
     })
     return {
       state,

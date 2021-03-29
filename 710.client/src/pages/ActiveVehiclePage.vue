@@ -17,6 +17,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { vehicleService } from '../services/VehicleService'
 import { useRoute } from 'vue-router'
+import { logger } from '../services/utils/Logger'
 export default {
   name: 'ActiveVehiclePage',
   setup() {
@@ -28,7 +29,7 @@ export default {
 
     onMounted(async() => {
       await vehicleService.getVehicle(route.params.id)
-      console.log(AppState.vehicle)
+      logger.log(AppState.vehicle)
     })
     return {
       state,

@@ -7,10 +7,10 @@ export class VehiclesController extends BaseController {
   constructor() {
     super('api/vehicles')
     this.router
-      .get('', this.getAllVehicles)
       .get('/:id/maintenance', this.getAllMaintenanceByVehicleId)
-      // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
+    // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('', this.getAllVehicles)
       .get('/:id', this.getVehicleById)
       .post('', this.createVehicle)
       .put('/:id', this.editVehicle)

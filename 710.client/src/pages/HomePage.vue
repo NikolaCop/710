@@ -9,7 +9,7 @@
     </div>
     <div class="row p-3 justify-content-center">
       <div class="col-xs-10 col-sm-9 col-md-8 col-lg-7 col-xl-5">
-        <router-link :to="{name: 'YourCarPage', params: { id: id }}">
+        <router-link :to="{name: 'Yourvehiclepage', params: { id: id }}">
           <div class="card align-items-center bg-primary vehicle-rounded">
             <img src="../assets/img/porsche.png" class="card-img-top w-50 img-fluid animate__animated animate__fadeInLeft" id="carPicButton" alt="">
           </div>
