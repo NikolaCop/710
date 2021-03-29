@@ -12,10 +12,10 @@ class MaintenanceService {
     }
   }
 
-  async getMaintenance(id) {
+  async getMaintenanceById(id) {
     try {
-      const res = await api.get('api/vehicles/' + id + '/maintenance')
-      AppState.maintenance = res.data
+      const res = await api.get('api/maintenance/' + id)
+      AppState.activeMaintenance = res.data
     } catch (error) {
       logger.log(error)
     }
@@ -30,7 +30,7 @@ class MaintenanceService {
     }
   }
 
-  async editMaintenance(editedMaintenanceData, id) {
+  async editMaintenance(id, editedMaintenanceData) {
     try {
       const res = await api.put('api/maintenance/' + id, editedMaintenanceData)
       AppState.activeMaintenance = res.data
