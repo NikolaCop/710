@@ -50,7 +50,10 @@
       <div class="row p-3">
         <div class="col-6">
           <router-link
-            :to="{ name: 'MaintenanceHistoryPage', params: { id: id } }"
+            :to="{
+              name: 'MaintenanceHistoryPage',
+              params: { id: state.vehicle.id },
+            }"
           >
             <button type="button" id="tile" class="btn btn-primary">
               Maintenance
@@ -105,7 +108,7 @@ import { vehicleService } from '../services/VehicleService'
 import { useRoute } from 'vue-router'
 import { logger } from '../services/utils/Logger'
 export default {
-  name: 'Yourvehiclepage',
+  name: 'YourVehiclePage',
   props: {
     vehicle: { type: Object, required: true }
   },
