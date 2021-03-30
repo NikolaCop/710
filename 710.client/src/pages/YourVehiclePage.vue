@@ -17,20 +17,18 @@
         <div class="col-12 col-md-5 d-flex align-items-center">
           <div class="card bg-primary">
             <div class="card-header">
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-toggle="modal"
-                data-target="#edit-vehicle"
-              >
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-vehicle">
                 Edit
               </button>
               <EditVehicleModal />
-              <h2>
-                {{ state.vehicle.year }} {{ state.vehicle.make }}
-                {{ state.vehicle.model }}
-              </h2>
-              <h4>Miles: {{ state.vehicle.mileage }}</h4>
+              <button type="button" class="btn btn-danger" @click="archiveVehicle">
+                Archive
+              </button>
+              <h2>{{ state.vehicle.year }} {{ state.vehicle.make }} {{ state.vehicle.model }}</h2>
+              <h4>
+                Miles: {{ state.vehicle.mileage }}
+              </h4>
+
               <h4>VIN: {{ state.vehicle.vin }}</h4>
               <i
                 class="fa fa-camera"
@@ -107,6 +105,7 @@ import { AppState } from '../AppState'
 import { vehicleService } from '../services/VehicleService'
 import { useRoute } from 'vue-router'
 import { logger } from '../services/utils/Logger'
+import router from '../router'
 export default {
   name: 'YourVehiclePage',
   props: {
@@ -124,7 +123,14 @@ export default {
     })
     return {
       state,
-      route
+      route,
+      router,
+      async archiveVehicle() {
+        if (confirm('Archive Vehicle?')) {
+          await vehicleService.archiveVehicle(route.params.id)
+          router.push({ name: 'YourGaragePage' })
+        }
+      }
     }
   },
   components: {}
