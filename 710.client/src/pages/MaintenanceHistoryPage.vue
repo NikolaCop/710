@@ -30,11 +30,13 @@
 
 <script>
 import { computed, onMounted, reactive } from 'vue'
-import { maintenanceService } from '../services/MaintenanceService'
 import { AppState } from '../AppState'
+import { vehicleService } from '../services/VehicleService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'MaintenanceHistoryPage',
   setup() {
+    const route = useRoute()
     const state = reactive({
       maintenance: computed(() => AppState.maintenance),
       user: computed(() => AppState.user),
@@ -42,7 +44,7 @@ export default {
     })
 
     onMounted(async () => {
-      await maintenanceService.getAllMaintenance()
+      await vehicleService.getAllMaintenanceByVehicleId(route.params.id)
     })
     return {
       state
