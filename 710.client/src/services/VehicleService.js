@@ -21,6 +21,15 @@ class VehicleService {
     }
   }
 
+  async getAllMaintenanceByVehicleId(id) {
+    try {
+      const res = await api.get(`api/vehicles/${id}/maintenance`)
+      AppState.maintenance = res.data
+    } catch (error) {
+      logger.log(error)
+    }
+  }
+
   async getUserVehicles() {
     const res = await api.get('account')
     logger.log(res.data)

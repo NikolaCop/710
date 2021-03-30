@@ -6,8 +6,8 @@ const Maintenance = new Schema(
   {
     vehicleID: { type: ObjectId, ref: 'Vehicle', required: true },
     name: { type: String, required: true },
-    DOS: { type: String, required: true },
-    mileageAtDOS: { type: Number, required: true },
+    dos: { type: Date, required: true },
+    mileageAtDos: { type: Number, required: true },
     archived: { type: Boolean, default: false },
     mileageDue: { type: Number },
     additionalInfo: { type: String },
