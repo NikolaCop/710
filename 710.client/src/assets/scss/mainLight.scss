@@ -1,0 +1,28 @@
+@import "./_variablesLight.scss";
+@import "bootstrap";
+@import "./_transitions.scss";
+@import "./_overrides.scss";
+
+:root {
+  --grey: #f6f6f6;
+}
+dallen{
+  opacity: 0!important;
+  transition: all 0.1s ease!important;
+}
+dallen.fadeText{
+  opacity: 1!important;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $body-bg;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
+}
