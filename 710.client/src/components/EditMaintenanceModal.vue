@@ -11,7 +11,9 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Edit Maintenance</h5>
+            <h5 class="modal-title">
+              Edit Maintenance
+            </h5>
             <button
               type="button"
               class="close"
@@ -56,13 +58,36 @@
                   v-model="state.activeMaintenance.mileageAtDos"
                 />
               </div>
+
+              <div class="form-group">
+                <input
+                  type="number"
+                  name="mileageDue"
+                  id="mileageDue"
+                  class="form-control"
+                  placeholder="Mileage Due..."
+                  aria-describedby="helpId"
+                  v-model="state.activeMaintenance.mileageDue"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="date"
+                  name="dateDue"
+                  id="dateDue"
+                  class="form-control"
+                  placeholder="Date Due..."
+                  aria-describedby="helpId"
+                  v-model="state.activeMaintenance.dateDue"
+                />
+              </div>
               <div class="form-group">
                 <input
                   type="text"
                   name="additionalInfo"
                   id="additionalInfo"
                   class="form-control"
-                  placeholder="Edit Additional Information..."
+                  placeholder="Enter Any Additional Information..."
                   aria-describedby="helpId"
                   v-model="state.activeMaintenance.additionalInfo"
                 />
@@ -96,7 +121,7 @@ export default {
       state,
       async editMaintenance() {
         try {
-          const maintenance = { name: state.activeMaintenance.name, dos: state.activeMaintenance.dos, mileageAtDos: state.activeMaintenance.mileageAtDos, additionalInfo: state.activeMaintenance.additionalInfo, vehicleID: state.activeMaintenance.id }
+          const maintenance = { name: state.activeMaintenance.name, dos: state.activeMaintenance.dos, mileageAtDos: state.activeMaintenance.mileageAtDos, additionalInfo: state.activeMaintenance.additionalInfo, vehicleID: state.activeMaintenance.id, mileageDue: state.activeMaintenance.mileageDue, dateDue: state.activeMaintenance.dateDue }
           await maintenanceService.editMaintenance(state.activeMaintenance.id, maintenance)
           $('#edit-maintenance').modal('hide')
         } catch (error) {
@@ -108,3 +133,8 @@ export default {
   components: {}
 }
 </script>
+<style scoped>
+#additionalInfo{
+  height: 200px;
+}
+</style>
