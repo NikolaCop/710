@@ -16,9 +16,17 @@
           </button>
         </div>
         <div>{{ state.activeMaintenance }}</div>
+        <EditMaintenanceModal />
       </div>
+      <router-link
+        :to="{
+          name: 'RecordsPage',
+          params: { id: state.activeMaintenance.id },
+        }"
+      >
+        <h1>Records</h1>
+      </router-link>
     </div>
-    <EditMaintenanceModal />
   </div>
 </template>
 

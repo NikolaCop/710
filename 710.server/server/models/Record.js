@@ -5,8 +5,9 @@ const ObjectId = mongoose.SchemaTypes.ObjectId
 const Record = new Schema(
   {
     maintenanceID: { type: ObjectId, ref: 'Maintenance', required: true },
-    name: { type: String, required: true },
-    images: { type: String },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    images: { type: Object },
     mfr: { type: String },
     warrantyInfo: { type: String },
     archived: { type: Boolean, default: false, required: true },

@@ -51,6 +51,12 @@ const routes = [
     name: 'ActiveVehiclePage',
     component: loadPage('ActiveVehiclePage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/recordspage/:id',
+    name: 'RecordsPage',
+    component: loadPage('RecordsPage'),
+    beforeEnter: authGuard
   }
 ]
 
