@@ -3,7 +3,9 @@
     <div class="Yourvehiclepage text-white">
       <div class="row">
         <div class="col-12 text-center">
-          <div class="card bg-primary">Your Vehicle Page</div>
+          <div class="card bg-primary">
+            Your Vehicle Page
+          </div>
         </div>
       </div>
       <div class="row">
@@ -77,7 +79,9 @@
       </div>
       <div class="row p-3">
         <div class="col-6">
-          <button type="button" id="tile" class="btn btn-primary">Tires</button>
+          <button type="button" id="tile" class="btn btn-primary">
+            Tires
+          </button>
         </div>
         <div class="col-6">
           <button type="button" id="tile" class="btn btn-primary">
@@ -116,7 +120,7 @@ export default {
       vehicle: computed(() => AppState.activeVehicle)
     })
     const route = useRoute()
-    onMounted(async () => {
+    onMounted(async() => {
       await vehicleService.getVehicle(route.params.id)
       logger.log(AppState.activeVehicle)
     })

@@ -1,27 +1,19 @@
 <template>
-  <div class="Maintenance">
-    <div class="row">
-      <div class="col-12 text-center">
-        <div>
-          <router-link
-            :to="{
-              name: 'MaintenanceDetailsPage',
-              params: { id: maintenance.id },
-            }"
-          >
-            <h4>
-              {{ maintenance.name }}
-            </h4>
-          </router-link>
-        </div>
-        <div>
-          <h4>
-            {{ maintenance.DOS }}
-          </h4>
-        </div>
-      </div>
-    </div>
-  </div>
+  <tbody class="Maintenance">
+    <tr>
+      <router-link :to="{name: 'MaintenanceDetailsPage', params: { id: maintenance.id }}">
+        <th scope="col">
+          {{ maintenance.name }}
+        </th>
+      </router-link>
+      <td scope="col">
+        {{ maintenance.mileageAtDos }}
+      </td>
+      <td scope="col">
+        {{ convertDate(maintenance.dos) }}
+      </td>
+    </tr>
+  </tbody>
 </template>
 
 <script>
@@ -39,7 +31,13 @@ export default {
       maintenance: computed(() => AppState.maintenance)
     })
     return {
-      state
+      state,
+      convertDate(updatedAt) {
+        const dateYear = updatedAt.slice(0, 4)
+        const dateMonth = updatedAt.slice(5, 7)
+        const dateDay = updatedAt.slice(8, 10)
+        return dateMonth + '/' + dateDay + '/' + dateYear
+      }
       // async editMaintenance(event) {
       //   try {
       //     await maintenanceService.editMaintenance(state.maintenance.id, { maintenance: event.target.innerText })

@@ -11,7 +11,9 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add Maintenance</h5>
+            <h5 class="modal-title">
+              Add Maintenance
+            </h5>
             <button
               type="button"
               class="close"
@@ -82,30 +84,32 @@
 
 <script>
 import { computed, reactive } from 'vue'
-import { useRouter } from 'vue-router'
 import { maintenanceService } from '../services/MaintenanceService'
 import $ from 'jquery'
 import { logger } from '../services/utils/Logger'
 import { AppState } from '../AppState'
+import { useRoute } from 'vue-router'
 export default {
   name: 'AddMaintenanceModal',
   setup() {
-    const router = useRouter()
     const state = reactive({
+      user: computed(() => AppState.user),
       activeVehicle: computed(() => AppState.activeVehicle),
       newMaintenance: {}
     })
+    const route = useRoute()
     return {
       state,
-      async addMaintenance(id) {
+      route,
+      async addMaintenance() {
         try {
-          const maintenance = { name: state.newMaintenance.name, dos: state.newMaintenance.dos, mileageAtDos: state.newMaintenance.mileageAtDos, additionalInfo: state.newMaintenance.additionalInfo, vehicleID: state.activeVehicle.id }
-          await maintenanceService.createMaintenance(maintenance)
           $('#add-maintenance').modal('hide')
-          state.newMaintenance.user = state.user
-          router.push({ name: 'MaintenanceHistoryPage', params: { id: id } })
+          state.newMaintenance.creator = state.user
+          // state.newMaintenance.creatorId = state.user._id
+          state.newMaintenance.vehicleID = route.params.id
+          logger.log(state.newMaintenance)
+          await maintenanceService.createMaintenance(state.newMaintenance)
           state.newMaintenance = {}
-          logger.log(AppState.maintenance)
         } catch (error) {
           logger.log(error)
         }
