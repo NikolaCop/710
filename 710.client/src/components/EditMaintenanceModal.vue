@@ -81,15 +81,22 @@
                   v-model="state.activeMaintenance.dateDue"
                 />
               </div>
+              <div class="row p-4">
+                <button type="button" class="btn btn-outline-primary " @click="state.activeMaintenance.additionalInfo.push({text:''})">
+                  Add Additional Information...
+                </button>
+              </div>
               <div class="form-group">
                 <input
                   type="text"
                   name="additionalInfo"
                   id="additionalInfo"
-                  class="form-control"
+                  class="form-control mt-2"
                   placeholder="Enter Any Additional Information..."
                   aria-describedby="helpId"
-                  v-model="state.activeMaintenance.additionalInfo"
+                  v-for="info in state.activeMaintenance.additionalInfo"
+                  :key="info"
+                  v-model="info.text"
                 />
               </div>
               <div class="modal-footer justify-content-center">
@@ -128,6 +135,7 @@ export default {
           logger.log(error)
         }
       }
+
     }
   },
   components: {}
@@ -135,6 +143,6 @@ export default {
 </script>
 <style scoped>
 #additionalInfo{
-  height: 200px;
+  height: 50px;
 }
 </style>

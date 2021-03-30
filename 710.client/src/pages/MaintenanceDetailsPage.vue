@@ -20,7 +20,7 @@
           </div>
           <div class="col-12 p-3">
             <div>Service: {{ state.activeMaintenance.name }}</div>
-            <div>Date of Service: {{ state.activeMaintenance.dos }}</div>
+            <div>Date of Service: {{ new Date(state.activeMaintenance.dos).toLocaleDateString() }}</div>
             <div>Mileage at Service: {{ state.activeMaintenance.mileageAtDos }}</div>
             <div>Recommended Change (Mileage): {{ state.activeMaintenance.mileageDue }} </div>
             <div>Recommended Change (Date): {{ state.activeMaintenance.dateDue }}</div>
@@ -30,8 +30,8 @@
               Additional Info:
             </h4>
           </div>
-          <div class="col-12">
-            {{ state.activeMaintenance.additionalInfo }}
+          <div class="col-12" v-for="info in state.activeMaintenance.additionalInfo" :key="info">
+            {{ info.text }}
           </div>
         </div>
       </div>
@@ -61,13 +61,7 @@ export default {
     })
     return {
       state,
-      route,
-      convertDate(updatedAt) {
-        const dateYear = updatedAt.slice(0, 4)
-        const dateMonth = updatedAt.slice(5, 7)
-        const dateDay = updatedAt.slice(8, 10)
-        return dateMonth + '/' + dateDay + '/' + dateYear
-      }
+      route
     }
   },
   components: {}
