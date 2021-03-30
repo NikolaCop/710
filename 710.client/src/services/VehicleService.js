@@ -6,7 +6,16 @@ class VehicleService {
   async getAllVehicles() {
     try {
       const res = await api.get('api/vehicles')
-      AppState.vehicles = res.data
+      AppState.vehicles = res.data.filter(a => a.archived === false)
+    } catch (error) {
+      logger.log(error)
+    }
+  }
+
+  async getAllArchivedVehicles() {
+    try {
+      const res = await api.get('api/vehicles')
+      AppState.archivedVehicles = res.data.filter(a => a.archived === true)
     } catch (error) {
       logger.log(error)
     }

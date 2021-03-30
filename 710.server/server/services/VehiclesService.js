@@ -6,7 +6,7 @@ class VehiclesService {
 
   // This also allows for ownerId to be changed in order to transfer the cars between owners
   async editVehicle(id, userId, body) {
-    const vehicle = await dbContext.Vehicle.findByIdAndUpdate({ _id: id, creatorId: userId }, body)
+    const vehicle = await dbContext.Vehicle.findByIdAndUpdate({ _id: id, creatorId: userId }, body, { new: true })
     if (!vehicle) {
       throw new BadRequest('Invalid ID')
     }
