@@ -11,7 +11,9 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Upload An Image</h5>
+            <h5 class="modal-title">
+              Upload An Image
+            </h5>
             <button
               type="button"
               class="close"
@@ -29,7 +31,9 @@
               <div>
                 <img class="preview" :src="state.picture" />
                 <br />
-                <button @click="onUpload">Upload</button>
+                <button @click="onUpload">
+                  Upload
+                </button>
               </div>
             </div>
           </div>

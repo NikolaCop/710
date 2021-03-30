@@ -18,11 +18,26 @@
             <AddMaintenanceModal />
           </div>
         </div>
-        <Maintenance
-          v-for="maintenance in state.maintenance"
-          :key="maintenance.id"
-          :maintenance="maintenance"
-        />
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="col-10">
+          <table class="table text-light" id="maintenanceTable">
+            <thead>
+              <tr>
+                <th scope="col">
+                  Service
+                </th>
+                <th scope="col">
+                  Mileage at Service
+                </th>
+                <th scope="col">
+                  Date of Service
+                </th>
+              </tr>
+            </thead>
+            <Maintenance v-for="maintenance in state.maintenance" :key="maintenance.id" :maintenance="maintenance" />
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -33,6 +48,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { vehicleService } from '../services/VehicleService'
 import { useRoute } from 'vue-router'
+import Maintenance from '../components/Maintenance.vue'
 export default {
   name: 'MaintenanceHistoryPage',
   setup() {
@@ -43,14 +59,15 @@ export default {
       account: computed(() => AppState.account)
     })
 
-    onMounted(async () => {
+    onMounted(async() => {
       await vehicleService.getAllMaintenanceByVehicleId(route.params.id)
     })
     return {
       state
+
     }
   },
-  components: {}
+  components: { Maintenance }
 }
 </script>
 
