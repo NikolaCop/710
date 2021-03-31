@@ -96,7 +96,6 @@ export default {
           state.newMaintenance.creator = state.user
           // state.newMaintenance.creatorId = state.user._id
           state.newMaintenance.vehicleID = route.params.id
-          debugger
           logger.log(state.newMaintenance)
           await maintenanceService.createMaintenance(state.newMaintenance)
           state.newMaintenance = {}

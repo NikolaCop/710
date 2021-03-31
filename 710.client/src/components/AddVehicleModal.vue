@@ -112,11 +112,12 @@ export default {
       state,
       async createVehicle() {
         try {
+          const vehicleID = await vehicleService.createVehicle(state.newVehicle)
           $('#add-vehicle').modal('hide')
           state.newVehicle.creatorId = state.user._id
           state.newVehicle.owner = state.user._id
-          const vehicleId = await vehicleService.createVehicle(state.newVehicle)
-          router.push({ name: 'YourVehiclePage', params: { id: vehicleId } })
+          console.log(vehicleID)
+          router.push({ name: 'YourVehiclePage', params: { id: vehicleID } })
           state.newVehicle = {}
           logger.log(AppState.vehicles)
         } catch (error) {

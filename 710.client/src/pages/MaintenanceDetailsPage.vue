@@ -14,6 +14,7 @@
               data-target="#edit-maintenance"
               data-toggle="modal"
               aria-hidden="true"
+              v-if="state.user.email===state.user.email"
             >
               <i class="fa fa-plus-square" aria-hidden="true"></i>
             </button>

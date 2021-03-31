@@ -47,7 +47,8 @@ class VehicleService {
   async createVehicle(vehicleData) {
     try {
       const res = await api.post('api/vehicles', vehicleData)
-      AppState.vehicle.push(res.data)
+      logger.log(res.data)
+      AppState.vehicles.push(res.data)
       return res.data.id
     } catch (error) {
       logger.log(error)

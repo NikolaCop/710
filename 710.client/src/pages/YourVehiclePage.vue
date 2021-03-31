@@ -19,11 +19,11 @@
         <div class="col-12 col-md-5 d-flex align-items-center">
           <div class="card bg-primary">
             <div class="card-header">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-vehicle">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-vehicle" v-if="state.user.email===state.user.email">
                 Edit
               </button>
               <EditVehicleModal />
-              <button type="button" class="btn btn-danger" @click="archiveVehicle">
+              <button type="button" class="btn btn-danger" @click="archiveVehicle" v-if="state.user.email===state.user.email">
                 Archive
               </button>
               <h2>{{ state.vehicle.year }} {{ state.vehicle.make }} {{ state.vehicle.model }}</h2>
@@ -37,6 +37,7 @@
                 type="button"
                 data-toggle="modal"
                 data-target="#upload-image"
+                v-if="state.user.email===state.user.email"
               ></i>
               <UploadImageModal />
             </div>
