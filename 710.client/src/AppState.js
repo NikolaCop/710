@@ -30,5 +30,5 @@ export function themeToggle() {
 
 export function darkThemeToggle() {
   darkThemecss()
-  AppState.theme = true
+  AppState.theme = false
 }

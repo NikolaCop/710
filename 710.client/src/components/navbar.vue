@@ -5,7 +5,7 @@
     <div class="row margin-l-1 justify-content-around">
       <div class="col-1 mt-1 card card-navbar-blue bg-primary">
       </div>
-      <div class="col-1 mt-1 card card-navbar-white bg-light">
+      <div class="col-1 mt-1 card card-navbar-white">
       </div>
       <div class="col-9 mt-1 card card-navbar-primary bg-primary">
       </div>
@@ -15,7 +15,7 @@
         <router-link :to="{ name: 'Home' }">
           <h3><i class="fa fa-home text-light " aria-hidden="true"></i></h3>
         </router-link>
-        <h4 v-if="state.theme === true">
+        <h4 v-if="state.theme === false">
           <i class="fa fa-toggle-on" @click="toggleTheme" aria-hidden="true"></i>
         </h4>
         <h4 v-else>
@@ -87,7 +87,7 @@
 
 <script>
 import { AuthService } from '../services/AuthService'
-import { AppState, themeToggle, darkThemeToggle } from '../AppState'
+import { AppState, darkThemeToggle, themeToggle } from '../AppState'
 import { computed, reactive } from 'vue'
 export default {
   name: 'Navbar',
@@ -109,7 +109,7 @@ export default {
         themeToggle()
         console.log('Toggle Second Time')
       },
-      async darkTheme() {
+      async darkToggle() {
         darkThemeToggle()
       }
     }
