@@ -66,7 +66,7 @@
                     class="carousel-control-prev"
                     role="button"
                     data-slide="prev"
-                    @click="state.activeIndex--"
+                    @click="state.active.index--"
                   >
                     <span
                       class="carousel-control-prev-icon"
@@ -105,7 +105,6 @@ export default {
   },
   setup() {
     const state = reactive({
-      activeIndex: 0,
       active: { index: 0 }
     })
     return {
