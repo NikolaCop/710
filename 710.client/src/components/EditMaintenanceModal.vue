@@ -11,7 +11,9 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Edit Maintenance</h5>
+            <h5 class="modal-title">
+              Edit Maintenance
+            </h5>
             <button
               type="button"
               class="close"
@@ -56,15 +58,45 @@
                   v-model="state.activeMaintenance.mileageAtDos"
                 />
               </div>
+
+              <div class="form-group">
+                <input
+                  type="number"
+                  name="mileageDue"
+                  id="mileageDue"
+                  class="form-control"
+                  placeholder="Mileage Due..."
+                  aria-describedby="helpId"
+                  v-model="state.activeMaintenance.mileageDue"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="date"
+                  name="dateDue"
+                  id="dateDue"
+                  class="form-control"
+                  placeholder="Date Due..."
+                  aria-describedby="helpId"
+                  v-model="state.activeMaintenance.dateDue"
+                />
+              </div>
+              <div class="row p-4">
+                <button type="button" class="btn btn-outline-primary " @click="state.activeMaintenance.additionalInfo.push({text:''})">
+                  Add Additional Information...
+                </button>
+              </div>
               <div class="form-group">
                 <input
                   type="text"
                   name="additionalInfo"
                   id="additionalInfo"
-                  class="form-control"
-                  placeholder="Edit Additional Information..."
+                  class="form-control mt-2"
+                  placeholder="Enter Any Additional Information..."
                   aria-describedby="helpId"
-                  v-model="state.activeMaintenance.additionalInfo"
+                  v-for="info in state.activeMaintenance.additionalInfo"
+                  :key="info"
+                  v-model="info.text"
                 />
               </div>
               <div class="modal-footer justify-content-center">
@@ -96,15 +128,21 @@ export default {
       state,
       async editMaintenance() {
         try {
-          const maintenance = { name: state.activeMaintenance.name, dos: state.activeMaintenance.dos, mileageAtDos: state.activeMaintenance.mileageAtDos, additionalInfo: state.activeMaintenance.additionalInfo, vehicleID: state.activeMaintenance.id }
-          await maintenanceService.editMaintenance(state.activeMaintenance.id, maintenance)
           $('#edit-maintenance').modal('hide')
+          const maintenance = { name: state.activeMaintenance.name, dos: state.activeMaintenance.dos, mileageAtDos: state.activeMaintenance.mileageAtDos, additionalInfo: state.activeMaintenance.additionalInfo, vehicleID: state.activeMaintenance.id, mileageDue: state.activeMaintenance.mileageDue, dateDue: state.activeMaintenance.dateDue }
+          await maintenanceService.editMaintenance(state.activeMaintenance.id, maintenance)
         } catch (error) {
           logger.log(error)
         }
       }
+
     }
   },
   components: {}
 }
 </script>
+<style scoped>
+#additionalInfo{
+  height: 50px;
+}
+</style>

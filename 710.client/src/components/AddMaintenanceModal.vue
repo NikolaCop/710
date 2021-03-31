@@ -58,17 +58,6 @@
                   v-model="state.newMaintenance.mileageAtDos"
                 />
               </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="additionalInfo"
-                  id="additionalInfo"
-                  class="form-control"
-                  placeholder="Enter Additional Information..."
-                  aria-describedby="helpId"
-                  v-model="state.newMaintenance.additionalInfo"
-                />
-              </div>
               <div class="modal-footer justify-content-center">
                 <button class="btn btn-primary" type="submit">
                   <i class="fa fa-plus-square" aria-hidden="true"></i>

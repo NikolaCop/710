@@ -45,6 +45,7 @@
                 type="button"
                 data-toggle="modal"
                 data-target="#upload-image"
+                v-if="state.user.email===state.user.email"
               ></i>
               <UploadImageModal />
             </div>
