@@ -66,7 +66,7 @@
                     class="carousel-control-prev"
                     role="button"
                     data-slide="prev"
-                    @click="state.active.index--"
+                    @click="changeIndex(-1)"
                   >
                     <span
                       class="carousel-control-prev-icon"
@@ -78,7 +78,7 @@
                     class="carousel-control-next"
                     role="button"
                     data-slide="next"
-                    @click="state.active.index++"
+                    @click="changeIndex(1)"
                   >
                     <span
                       class="carousel-control-next-icon"
@@ -103,12 +103,22 @@ export default {
   props: {
     record: { type: Object, required: true }
   },
-  setup() {
+  setup(props) {
     const state = reactive({
       active: { index: 0 }
     })
     return {
       state,
+      changeIndex(num) {
+        const newIndex = state.active.index + num
+        if (newIndex === -1) {
+          state.active.index = props.record.images.length + 1
+        } else if (newIndex > props.record.images.length + 1) {
+          state.active.index = 0
+        } else {
+          state.active.index += num
+        }
+      },
       checkActive(index) {
         return index === state.active.index ? 'active' : ''
       }
