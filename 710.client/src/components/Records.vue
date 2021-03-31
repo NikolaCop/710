@@ -11,7 +11,16 @@
       <td scope="col">
         {{ convertDate(record.createdAt) }}
       </td>
-      <td scope="col">Photos</td>
+      <!-- adding a binding to data-target allows you to add in a unique id from your state -->
+      <td
+        type="button"
+        scope="col"
+        data-toggle="modal"
+        :data-target="'#view-record-' + record.id"
+      >
+        View
+      </td>
+      <ViewRecordsModal :record="record" />
     </tr>
   </tbody>
 </template>
