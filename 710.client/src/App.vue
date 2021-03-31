@@ -8,18 +8,22 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, reactive } from 'vue'
 import { AppState } from './AppState'
+import './assets/scss/main.scss'
 export default {
   name: 'App',
   setup() {
+    const state = reactive({
+      loading: false,
+      theme: true
+    })
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
+      state
     }
   }
 }
 </script>
 <style lang="scss">
-@import "./assets/scss/main.scss";
-
 </style>

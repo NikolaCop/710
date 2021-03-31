@@ -15,7 +15,7 @@ class RecordsService {
   }
 
   async editRecord(id, body) {
-    const record = await dbContext.Record.findByIdAndUpdate(id, body)
+    const record = await dbContext.Record.findByIdAndUpdate(id, body, { new: true })
     if (!record) {
       throw new BadRequest('INVALID ID')
     }

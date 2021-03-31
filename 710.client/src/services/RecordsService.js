@@ -14,7 +14,7 @@ class RecordsService {
 
   async getRecords(id) {
     try {
-      const res = await api.get('api/vehicles/' + id + '/records')
+      const res = await api.get('api/maintenance/' + id + '/records')
       AppState.records = res.data
     } catch (error) {
       logger.log(error)
@@ -24,7 +24,8 @@ class RecordsService {
   async createRecords(recordsData) {
     try {
       const res = await api.post('api/records', recordsData)
-      AppState.records.push(res.data)
+      this.getRecords(recordsData.maintenanceID)
+      logger.log(AppState.records)
       return res.data.id
     } catch (error) {
       logger.log(error)

@@ -1,14 +1,45 @@
 <template>
-  <div class="Records">
-  </div>
+  <tbody class="record">
+    <tr>
+      <!-- NOTE create button that toggles modal to be able to view record details -->
+      <td scope="col">
+        {{ record.title }}
+      </td>
+      <td scope="col">
+        {{ record.description }}
+      </td>
+      <td scope="col">
+        {{ new Date(record.createdAt).toLocaleDateString() }}
+      </td>
+      <!-- adding a binding to data-target allows you to add in a unique id from your state -->
+      <td
+        type="button"
+        scope="col"
+        data-toggle="modal"
+        :data-target="'#view-record-' + record.id"
+      >
+        View
+      </td>
+      <ViewRecordsModal :record="record" />
+    </tr>
+  </tbody>
 </template>
 
 <script>
+import { computed, reactive } from 'vue'
+import { AppState } from '../AppState'
 export default {
   name: 'Records',
-  props: [],
+  props: {
+    record: { type: Object, required: true }
+  },
   setup() {
-    return {}
+    const state = reactive({
+      user: computed(() => AppState.user)
+    })
+    return {
+      state
+    }
   },
   components: {}
 }

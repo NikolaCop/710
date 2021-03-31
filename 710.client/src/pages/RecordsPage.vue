@@ -1,14 +1,83 @@
 <template>
-  <div class="RecordsPage">
+  <div class="records-page container-fluid">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2>Records Page</h2>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          data-target="#add-record"
+          data-toggle="modal"
+          aria-hidden="true"
+        >
+          <i class="fa fa-plus-square" aria-hidden="true"></i>
+        </button>
+      </div>
+      <AddRecordModal />
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-10">
+        <table class="table" id="recordsTable">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">
+                Date
+                <i
+                  type="button"
+                  class="fas fa-sort ml-1"
+                  @click="sortByDate"
+                ></i>
+              </th>
+              <th scope="col">View Record</th>
+              <!-- make photos an icon that is clickable, that will pop up modal with all images -->
+            </tr>
+          </thead>
+          <Records
+            v-for="record in state.records"
+            :key="record.id"
+            :record="record"
+          />
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { computed, onMounted, reactive } from 'vue'
+import { AppState } from '../AppState'
+import { recordsService } from '../services/RecordsService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'RecordsPage',
   props: [],
   setup() {
-    return {}
+    const route = useRoute()
+    const state = reactive({
+      maintenance: computed(() => AppState.activeMaintenance),
+      records: computed(() => AppState.records),
+      sortDate: 'none'
+    })
+    onMounted(async () => {
+      await recordsService.getRecords(route.params.id)
+    })
+    return {
+      state,
+      sortByDate() {
+        if (state.sortDate === 'none') {
+          state.records.sort(function (a, b) { return new Date(a.createdAt) - new Date(b.createdAt) })
+          state.sortDate = 'first'
+        } else if (state.sortDate === 'first') {
+          state.records.sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt) })
+          state.sortDate = 'last'
+        } else {
+          recordsService.getRecords(state.maintenance.id)
+          state.sortDate = 'none'
+        }
+      }
+    }
   },
   components: {}
 }

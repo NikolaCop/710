@@ -35,8 +35,17 @@
             {{ info.text }}
           </div>
         </div>
+        <div>{{ state.activeMaintenance }}</div>
+        <EditMaintenanceModal />
       </div>
-      <EditMaintenanceModal />
+      <router-link
+        :to="{
+          name: 'RecordsPage',
+          params: { id: state.activeMaintenance.id },
+        }"
+      >
+        <h1>Records</h1>
+      </router-link>
     </div>
   </div>
 </template>

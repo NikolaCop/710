@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid bg-dark img-paint" id="img-paint">
     <div class="row justify-content-center height-welcome">
-      <div class="col-xs-12 text-center text-white">
-        <h3 class="welcome-size">
+      <div class="col-xs-12 text-center">
+        <h3 class="welcome-size text-light">
           Welcome to <b class="text-primary seventen"> 710 </b>
         </h3>
       </div>
@@ -27,14 +27,14 @@
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'YourGaragePage', params: { id: id }}">
           <button type="button" class="btn btn-info text-font-weight button-rounded-garage">
-            Garage Page
+            Garage
           </button>
         </router-link>
       </div>
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'Account', params: { id: id }}">
           <button type="button" class="btn btn-info text-font-weight button-rounded-account">
-            Account Page
+            Account
           </button>
         </router-link>
       </div>
@@ -65,7 +65,8 @@ export default {
   name: 'Home',
   setup() {
     const state = reactive({
-      user: computed(() => AppState.user)
+      user: computed(() => AppState.user),
+      loading: computed(() => AppState.loading)
     })
     onMounted(async() => { await animationService.personalAutomation() })
     onMounted(() => { animationService.sevenTenAutomation() })
@@ -87,13 +88,13 @@ span{
 span.fadeText{
   opacity: 1!important;
 }
-@media (min-width: 1240px) {
-.img-paint{
-  background-image: url('../assets/img/final7.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-}
+// @media (min-width: 1240px) {
+// .img-gif-car{
+//   background-image: url('../assets/img/car.gif');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+// }
+// }
 
 .vehicle-rounded{
   border-radius: 8rem;

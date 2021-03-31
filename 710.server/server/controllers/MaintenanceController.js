@@ -9,6 +9,7 @@ export class MaintenanceController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.getMaintenanceById)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:id/records', this.getAllRecordsByMaintenanceId)
       .post('', this.createMaintenance)
       .put('/:id', this.editMaintenance)
       .delete('/:id', this.deleteMaintenance)
