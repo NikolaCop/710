@@ -98,6 +98,7 @@
 
 <script>
 import { reactive } from 'vue'
+import { logger } from '../services/utils/Logger'
 export default {
   name: 'ViewRecordsModal',
   props: {
@@ -112,8 +113,8 @@ export default {
       changeIndex(num) {
         const newIndex = state.active.index + num
         if (newIndex === -1) {
-          state.active.index = props.record.images.length + 1
-        } else if (newIndex > props.record.images.length + 1) {
+          state.active.index = props.record.images.length - 1
+        } else if (newIndex > props.record.images.length - 1) {
           state.active.index = 0
         } else {
           state.active.index += num
