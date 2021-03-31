@@ -98,7 +98,6 @@
 
 <script>
 import { reactive } from 'vue'
-import { logger } from '../services/utils/Logger'
 export default {
   name: 'ViewRecordsModal',
   props: {
