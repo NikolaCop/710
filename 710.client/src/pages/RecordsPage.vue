@@ -22,8 +22,15 @@
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
-              <th scope="col">Date</th>
-              <th scope="col">Photos</th>
+              <th scope="col">
+                Date
+                <i
+                  type="button"
+                  class="fas fa-sort ml-1"
+                  @click="sortByDate"
+                ></i>
+              </th>
+              <th scope="col">View Record</th>
               <!-- make photos an icon that is clickable, that will pop up modal with all images -->
             </tr>
           </thead>
@@ -39,18 +46,37 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { recordsService } from '../services/RecordsService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'RecordsPage',
   props: [],
   setup() {
+    const route = useRoute()
     const state = reactive({
       maintenance: computed(() => AppState.activeMaintenance),
-      records: computed(() => AppState.records)
+      records: computed(() => AppState.records),
+      sortDate: 'none'
+    })
+    onMounted(async () => {
+      await recordsService.getRecords(route.params.id)
     })
     return {
-      state
+      state,
+      sortByDate() {
+        if (state.sortDate === 'none') {
+          state.records.sort(function (a, b) { return new Date(a.createdAt) - new Date(b.createdAt) })
+          state.sortDate = 'first'
+        } else if (state.sortDate === 'first') {
+          state.records.sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt) })
+          state.sortDate = 'last'
+        } else {
+          recordsService.getRecords(state.maintenance.id)
+          state.sortDate = 'none'
+        }
+      }
     }
   },
   components: {}
