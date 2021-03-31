@@ -1,5 +1,4 @@
 import { reactive } from 'vue'
-import { logger } from './services/utils/Logger'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -23,8 +22,9 @@ export function themeToggle() {
   if (AppState.theme === false) {
     lightThemecss()
   } else {
-    darkThemecss()
-    logger.log('App State dark theme')
+    location.reload()
+    // darkThemecss()
+    // logger.log('App State dark theme')
   }
 }
 
