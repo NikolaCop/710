@@ -128,9 +128,9 @@ export default {
       state,
       async editMaintenance() {
         try {
+          $('#edit-maintenance').modal('hide')
           const maintenance = { name: state.activeMaintenance.name, dos: state.activeMaintenance.dos, mileageAtDos: state.activeMaintenance.mileageAtDos, additionalInfo: state.activeMaintenance.additionalInfo, vehicleID: state.activeMaintenance.id, mileageDue: state.activeMaintenance.mileageDue, dateDue: state.activeMaintenance.dateDue }
           await maintenanceService.editMaintenance(state.activeMaintenance.id, maintenance)
-          $('#edit-maintenance').modal('hide')
         } catch (error) {
           logger.log(error)
         }

@@ -42,6 +42,7 @@ export class MaintenanceController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       delete req.body.archived
+      delete req.body.vehicleID
       return res.send(await maintenanceService.editMaintenance(req.params.id, req.body))
     } catch (error) {
       next(error)
