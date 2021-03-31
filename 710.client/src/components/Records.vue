@@ -9,7 +9,7 @@
         {{ record.description }}
       </td>
       <td scope="col">
-        {{ convertDate(record.createdAt) }}
+        {{ new Date(record.createdAt).toLocaleDateString() }}
       </td>
       <!-- adding a binding to data-target allows you to add in a unique id from your state -->
       <td
@@ -38,13 +38,7 @@ export default {
       user: computed(() => AppState.user)
     })
     return {
-      state,
-      convertDate(createdAt) {
-        const dateYear = createdAt.slice(0, 4)
-        const dateMonth = createdAt.slice(5, 7)
-        const dateDay = createdAt.slice(8, 10)
-        return dateMonth + '/' + dateDay + '/' + dateYear
-      }
+      state
     }
   },
   components: {}

@@ -41,33 +41,32 @@
                   data-ride="carousel"
                 >
                   <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <!-- { active: index == state.activeIndex } -->
+                    <div
+                      v-for="(image, index) in record.images"
+                      :key="image"
+                      class="carousel-item"
+                      :class="checkActive(index)"
+                    >
                       <img
                         class="d-block w-100"
-                        :src="record.images"
+                        :src="image"
                         alt="First slide"
                       />
                     </div>
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
                       <img
                         class="d-block w-100"
-                        :src="record.images"
-                        alt="Second slide"
-                      />
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        class="d-block w-100"
-                        :src="record.images"
+                        :src="record.images[2]"
                         alt="Third slide"
                       />
-                    </div>
+                    </div> -->
                   </div>
                   <a
                     class="carousel-control-prev"
-                    href="#carouselExampleControls"
                     role="button"
                     data-slide="prev"
+                    @click="state.activeIndex--"
                   >
                     <span
                       class="carousel-control-prev-icon"
@@ -77,9 +76,9 @@
                   </a>
                   <a
                     class="carousel-control-next"
-                    href="#carouselExampleControls"
                     role="button"
                     data-slide="next"
+                    @click="state.active.index++"
                   >
                     <span
                       class="carousel-control-next-icon"
@@ -98,13 +97,23 @@
 </template>
 
 <script>
+import { reactive } from 'vue'
 export default {
   name: 'ViewRecordsModal',
   props: {
     record: { type: Object, required: true }
   },
   setup() {
-    return {}
+    const state = reactive({
+      activeIndex: 0,
+      active: { index: 0 }
+    })
+    return {
+      state,
+      checkActive(index) {
+        return index === state.active.index ? 'active' : ''
+      }
+    }
   },
   components: {}
 }
