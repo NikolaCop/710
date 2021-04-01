@@ -11,8 +11,10 @@ export class VehiclesController extends BaseController {
     // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAllVehicles)
+      .get('/marketplace', this.getAllMarketVehicles)
       .get('/:id', this.getVehicleById)
       .post('', this.createVehicle)
+      .put('/marketplace/:id', this.buyVehicle)
       .put('/:id', this.editVehicle)
       .delete('/:id', this.deleteVehicle)
   }
@@ -30,6 +32,17 @@ export class VehiclesController extends BaseController {
       req.body.creatorId = req.userInfo.id
       delete req.body.archived
       res.send(await vehiclesService.editVehicle(req.params.id, req.userInfo.id, req.body))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async buyVehicle(req, res, next) {
+    try {
+      req.body.ownerId = req.userInfo.id
+      delete req.body.archived
+      console.log('Hello its me')
+      res.send(await vehiclesService.buyVehicle(req.params.id, req.body))
     } catch (error) {
       next(error)
     }
@@ -57,6 +70,14 @@ export class VehiclesController extends BaseController {
   async getAllVehicles(req, res, next) {
     try {
       return res.send(await vehiclesService.find({ ownerId: req.userInfo.id }))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getAllMarketVehicles(req, res, next) {
+    try {
+      return res.send(await vehiclesService.find())
     } catch (error) {
       next(error)
     }

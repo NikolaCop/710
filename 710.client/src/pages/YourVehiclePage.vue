@@ -93,7 +93,7 @@
       </div>
       <div class="row p-3">
         <div class="col-6">
-          <router-link :to="{ name: 'ActiveVehiclePage', params: { id: id } }">
+          <router-link :to="{ name: 'ActiveVehiclePage', params: { id: state.vehicle.id } }">
             <button type="button" id="tile" class="btn btn-primary">
               Active Vehicle
             </button>
