@@ -24,19 +24,21 @@
       </div>
     </div>
     <div v-if="state.user.isAuthenticated" class="row button-row-height justify-content-center">
-      <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
+      <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'YourGaragePage', params: { id: id }}">
           <button type="button" class="btn btn-info text-font-weight button-size button-rounded-garage">
             Garage
           </button>
         </router-link>
+      </div>
+      <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 px-1 text-center">
         <router-link :to="{name: 'MarketplacePage'}">
-          <button type="button" class="btn btn-info text-font-weight button-size button-rounded-garage">
+          <button type="button" class="btn btn-info  text-font-weight button-size button-rounded-garage">
             Marketplace
           </button>
         </router-link>
       </div>
-      <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
+      <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'Account', params: { id: id }}">
           <button type="button" class="btn btn-info text-font-weight button-size button-rounded-account">
             Account
