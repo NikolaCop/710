@@ -7,7 +7,7 @@ const Record = new Schema(
     maintenanceID: { type: ObjectId, ref: 'Maintenance', required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    images: { type: Object },
+    images: { type: Array },
     mfr: { type: String },
     warrantyInfo: { type: String },
     archived: { type: Boolean, default: false, required: true },

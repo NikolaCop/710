@@ -10,6 +10,7 @@ export const AppState = reactive({
   maintenance: {},
   activeMaintenance: {},
   records: {},
+  activeRecord: {},
   theme: true,
   loading: false,
   marketplace: true
