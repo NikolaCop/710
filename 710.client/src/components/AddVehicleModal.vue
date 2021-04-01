@@ -8,7 +8,7 @@
       aria-labelledby="modelTitleId"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">
@@ -80,6 +80,16 @@
                   v-model="state.newVehicle.vin"
                 />
               </div>
+              <div class="form-group">
+                <label for="avatarSelection">Choose An Avatar</label>
+                <select multiple class="form-control row d-flex" v-model="state.selectedImage">
+                  <option :value="avatar" class="col-12" v-for="avatar in state.avatars" :key="avatar">
+                    {{ avatar }}
+                  </option>
+                </select>
+                <img :src="state.selectedImage" alt="">
+                <span class="bg-something" :style="{backgroundImage: 'url('+ state.selectedImage + ')'}"></span>
+              </div>
               <div class="modal-footer justify-content-center">
                 <button type="submit" class="btn btn-success">
                   Create
@@ -106,7 +116,9 @@ export default {
     const router = useRouter()
     const state = reactive({
       user: computed(() => AppState.user),
-      newVehicle: {}
+      avatars: AppState.avatars,
+      newVehicle: {},
+      selectedImage: ''
     })
     return {
       state,
@@ -129,3 +141,9 @@ export default {
   components: {}
 }
 </script>
+
+<style scoped>
+.bg-something {
+  background-size: contain;
+}
+</style>

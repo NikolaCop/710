@@ -13,7 +13,9 @@ export const AppState = reactive({
   activeRecord: {},
   theme: true,
   loading: false,
-  marketplace: true
+  marketplace: true,
+  // NOTE add the rest of the avatars to array
+  avatars: ['charger.png', 'Hatchback.png']
 })
 
 const lightThemecss = () => import('./assets/scss/mainLight.scss')
