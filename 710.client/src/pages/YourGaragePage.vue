@@ -76,17 +76,17 @@ export default {
 }
 @media (min-width: 576px) {
 .button-size{
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 }
 @media (min-width: 767.98px) {
 .button-size{
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 }
 @media (min-width: 991.98px) {
 .button-size{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 }
 
