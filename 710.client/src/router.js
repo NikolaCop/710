@@ -57,6 +57,12 @@ const routes = [
     name: 'RecordsPage',
     component: loadPage('RecordsPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/marketplacepage',
+    name: 'MarketplacePage',
+    component: loadPage('MarketplacePage'),
+    beforeEnter: authGuard
   }
 ]
 

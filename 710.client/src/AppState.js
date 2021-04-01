@@ -11,7 +11,8 @@ export const AppState = reactive({
   activeMaintenance: {},
   records: {},
   theme: true,
-  loading: false
+  loading: false,
+  marketplace: true
 })
 
 const lightThemecss = () => import('./assets/scss/mainLight.scss')

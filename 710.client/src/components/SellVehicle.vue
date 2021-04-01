@@ -1,19 +1,20 @@
 <template>
   <div class="col-10 col-sm-10 col-md-8 col-lg-7 col-xl-4 mt-4 animate__animated animate__fadeInRight">
-    <router-link :to="{name: 'YourVehiclePage', params: { id: vehicle.id }}">
-      <div class="card bg-primary p-4 card-vehicle-rounded">
-        <div class="row justify-content-center">
-          <div class="col-8 text-center">
-            <img src="../assets/img/porsche.png" class="img-vehicle card-img-top img-fluid animate__animated animate__fadeInLeft animate__delay-0.75s">
-          </div>
-          <div class="col-10 text-center animate__animated animate__fadeInUp animate__delay-0.75s">
-            <h6 class="text-light">
-              {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
-            </h6>
-          </div>
+    <div class="card bg-primary p-4 card-vehicle-rounded">
+      <div class="row justify-content-center">
+        <div class="col-8 text-center">
+          <button class="btn btn-outline-light" @click="buyVehicle">
+            Buy
+          </button>
+          <img src="../assets/img/porsche.png" class="img-vehicle card-img-top img-fluid animate__animated animate__fadeInLeft animate__delay-0.75s">
+        </div>
+        <div class="col-10 text-center animate__animated animate__fadeInUp animate__delay-0.75s">
+          <h6 class="text-light">
+            {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+          </h6>
         </div>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -21,8 +22,9 @@
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { vehicleService } from '../services/VehicleService'
+import router from '../router'
 export default {
-  name: 'Vehicle',
+  name: 'SellVehicle',
   props: {
     vehicle: { type: Object, required: true }
   },
@@ -38,8 +40,8 @@ export default {
         console.log(props.vehicle.ownerId)
         console.log(props.vehicle)
         console.log(props.vehicle.id)
-        const res = await vehicleService.buyVehicle(props.vehicle, props.vehicle.id)
-        console.log(res)
+        await vehicleService.buyVehicle(props.vehicle.id, props.vehicle)
+        router.push({ name: 'YourGaragePage', params: { id: props.vehicle.id } })
       }
     }
   },

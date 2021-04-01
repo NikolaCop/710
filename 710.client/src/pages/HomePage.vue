@@ -30,6 +30,11 @@
             Garage
           </button>
         </router-link>
+        <router-link :to="{name: 'MarketplacePage'}">
+          <button type="button" class="btn btn-info text-font-weight button-size button-rounded-garage">
+            Marketplace
+          </button>
+        </router-link>
       </div>
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'Account', params: { id: id }}">
@@ -81,6 +86,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.border-light{
+  border-width: .5rem!important;
+  border-color: rgb(255, 255, 255)!important;
+}
 span{
   opacity: 0!important;
   transition: all 0.1s ease!important;

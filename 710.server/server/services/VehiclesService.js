@@ -16,6 +16,10 @@ class VehiclesService {
     return vehicle
   }
 
+  async buyVehicle(id, body) {
+    return await dbContext.Vehicle.findByIdAndUpdate(id, body)
+  }
+
   async deleteVehicleById(id, body) {
     return await dbContext.Vehicle.findByIdAndUpdate(id, body)
   }

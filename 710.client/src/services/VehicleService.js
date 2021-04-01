@@ -12,6 +12,15 @@ class VehicleService {
     }
   }
 
+  async getAllMarketVehicles() {
+    try {
+      const res = await api.get('api/vehicles/marketplace')
+      AppState.vehicles = res.data.filter(a => a.selling === true)
+    } catch (error) {
+      logger.log(error)
+    }
+  }
+
   async getAllArchivedVehicles() {
     try {
       const res = await api.get('api/vehicles')
@@ -55,10 +64,25 @@ class VehicleService {
     }
   }
 
-  async editVehicle(editedVehicleData, id) {
+  async editVehicle(id, editedVehicleData) {
     try {
       const res = await api.put('api/vehicles/' + id, editedVehicleData)
       AppState.activeVehicle = res.data
+      AppState.vehicles[id] = res.data
+      this.getVehicle(id)
+    } catch (error) {
+      logger.log(error)
+    }
+  }
+
+  async buyVehicle(id, editedVehicleData) {
+    try {
+      editedVehicleData.selling = false
+      console.log(id)
+      console.log(editedVehicleData)
+      const res = await api.put('api/vehicles/marketplace/' + id, editedVehicleData)
+      console.log(res)
+      AppState.vehicles[id] = res.data
       this.getVehicle(id)
     } catch (error) {
       logger.log(error)

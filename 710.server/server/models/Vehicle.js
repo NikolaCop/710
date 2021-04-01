@@ -12,7 +12,8 @@ const Vehicle = new Schema(
     creatorId: { type: String, required: true },
     ownerId: { type: String },
     images: { type: Array },
-    avatar: { type: String }
+    avatar: { type: String },
+    selling: { type: Boolean, default: false, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
