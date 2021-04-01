@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-dark img-paint" id="img-paint">
+  <div class="container-fluid bg-dark" id="img-paint">
     <div class="row justify-content-center height-welcome">
       <div class="col-xs-12 text-center">
         <h3 class="welcome-size text-light">
@@ -26,14 +26,14 @@
     <div v-if="state.user.isAuthenticated" class="row button-row-height justify-content-center">
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'YourGaragePage', params: { id: id }}">
-          <button type="button" class="btn btn-info text-font-weight button-rounded-garage">
+          <button type="button" class="btn btn-info text-font-weight button-size button-rounded-garage">
             Garage
           </button>
         </router-link>
       </div>
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'Account', params: { id: id }}">
-          <button type="button" class="btn btn-info text-font-weight button-rounded-account">
+          <button type="button" class="btn btn-info text-font-weight button-size button-rounded-account">
             Account
           </button>
         </router-link>
@@ -41,12 +41,12 @@
     </div>
     <div v-else class="row button-row-height justify-content-center">
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
-        <button type="button" @click="login" class="btn btn-info text-font-weight button-rounded-garage">
+        <button type="button" @click="login" class="btn btn-info text-font-weight button-size button-rounded-garage">
           Sign Up
         </button>
       </div>
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
-        <button type="button" @click="login" class="btn btn-info text-font-weight button-rounded-account">
+        <button type="button" @click="login" class="btn btn-info text-font-weight button-size button-rounded-account">
           Log In
         </button>
       </div>
@@ -90,8 +90,8 @@ span.fadeText{
 }
 // @media (min-width: 1240px) {
 // .img-gif-car{
-//   background-image: url('../assets/img/car.gif');
-//   background-size: cover;
+//   background-image: url('../assets/img/Gradient.png');
+//   background-size: contain;
 //   background-repeat: no-repeat;
 // }
 // }
@@ -123,16 +123,34 @@ span.fadeText{
 @media (min-width: 576px) {
 .welcome-size{
   font-size: 1.75rem;
+  margin-top: 7rem;
 }
 }
 @media (min-width: 767.98px) {
 .welcome-size{
   font-size: 2.5rem;
+  margin-top: 5rem;
 }
 }
 @media (min-width: 991.98px) {
 .welcome-size{
   font-size: 3rem;
+  margin-top: 7rem;
+}
+}
+@media (min-width: 576px) {
+.button-size{
+  font-size: 1.25rem;
+}
+}
+@media (min-width: 767.98px) {
+.button-size{
+  font-size: 1.5rem;
+}
+}
+@media (min-width: 991.98px) {
+.button-size{
+  font-size: 1.5rem;
 }
 }
 @media (min-width: 576px) {
