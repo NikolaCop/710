@@ -24,11 +24,11 @@
           <div class="modal-body">
             <div class="row text-center">
               <div class="col-12">
-                <h2>{{ record.title }}</h2>
+                <h2>{{ state.record.title }}</h2>
               </div>
               <div class="col-12">
                 <h4>
-                  {{ record.description }}
+                  {{ state.record.description }}
                 </h4>
               </div>
               <!-- <div class="col-12">
@@ -41,9 +41,8 @@
                   data-ride="carousel"
                 >
                   <div class="carousel-inner">
-                    <!-- { active: index == state.activeIndex } -->
                     <div
-                      v-for="(image, index) in record.images"
+                      v-for="(image, index) in state.record.images"
                       :key="image"
                       class="carousel-item"
                       :class="checkActive(index)"
@@ -54,13 +53,6 @@
                         alt="First slide"
                       />
                     </div>
-                    <!-- <div class="carousel-item">
-                      <img
-                        class="d-block w-100"
-                        :src="record.images[2]"
-                        alt="Third slide"
-                      />
-                    </div> -->
                   </div>
                   <a
                     class="carousel-control-prev"
@@ -88,6 +80,15 @@
                   </a>
                 </div>
               </div>
+              <div class="col-12 d-flex justify-content-around mt-3">
+                <input
+                  id="fileuploader"
+                  type="file"
+                  @change="previewImage"
+                  accept="image/*"
+                />
+                <button @click="onUpload">Upload</button>
+              </div>
             </div>
           </div>
         </div>
@@ -97,7 +98,11 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
+import uploadImage from '../ImageUploader'
+import { recordsService } from '../services/RecordsService'
+import { AppState } from '../AppState'
+import { logger } from '../services/utils/Logger'
 export default {
   name: 'ViewRecordsModal',
   props: {
@@ -105,10 +110,28 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      active: { index: 0 }
+      record: computed(() => AppState.activeRecord),
+      active: { index: 0 },
+      imageData: {},
+      path: 'recordsImages',
+      files: [],
+      newRecord: props.record
     })
     return {
       state,
+      previewImage(event) {
+        state.imageData = event.target.files[0]
+        logger.log(state.imageData)
+        state.files.push(...event.target.files)
+      },
+      async onUpload() {
+        for (let i = 0; i < state.files.length; i++) {
+          const res = await uploadImage(state.imageData, state.path)
+          state.newRecord.images.push(res.url)
+        }
+        await recordsService.addImage(state.newRecord, state.newRecord.id)
+        state.files = []
+      },
       changeIndex(num) {
         const newIndex = state.active.index + num
         if (newIndex === -1) {

@@ -73,7 +73,6 @@ class VehicleService {
     try {
       const res = await api.put('api/vehicles/' + vehicleId, editedVehicle)
       AppState.activeVehicle = res.data
-      logger.log(AppState.activeVehicle)
     } catch (error) {
       logger.log(error)
     }

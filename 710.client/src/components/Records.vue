@@ -17,6 +17,7 @@
         scope="col"
         data-toggle="modal"
         :data-target="'#view-record-' + record.id"
+        @click="setActive"
       >
         View
       </td>
@@ -28,17 +29,21 @@
 <script>
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { recordsService } from '../services/RecordsService'
 export default {
   name: 'Records',
   props: {
     record: { type: Object, required: true }
   },
-  setup() {
+  setup(props) {
     const state = reactive({
       user: computed(() => AppState.user)
     })
     return {
-      state
+      state,
+      async setActive() {
+        await recordsService.getRecordById(props.record.id)
+      }
     }
   },
   components: {}

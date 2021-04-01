@@ -21,6 +21,15 @@ class RecordsService {
     }
   }
 
+  async getRecordById(id) {
+    try {
+      const res = await api.get('api/records/' + id)
+      AppState.activeRecord = res.data
+    } catch (error) {
+      logger.log(error)
+    }
+  }
+
   async createRecords(recordsData) {
     try {
       const res = await api.post('api/records', recordsData)
@@ -44,6 +53,16 @@ class RecordsService {
 
   async archiveRecords(id) {
     await api.delete(`api/records/${id}`)
+  }
+
+  async addImage(editedRecord, recordId) {
+    try {
+      const res = await api.put('api/records/' + recordId, editedRecord)
+      AppState.activeRecord = res.data
+      // await this.getRecordById(recordId)
+    } catch (error) {
+      logger.log(error)
+    }
   }
 }
 export const recordsService = new RecordsService()
