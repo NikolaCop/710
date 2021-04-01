@@ -35,7 +35,6 @@
             {{ info.text }}
           </div>
         </div>
-        <div>{{ state.activeMaintenance }}</div>
         <EditMaintenanceModal />
       </div>
       <router-link
