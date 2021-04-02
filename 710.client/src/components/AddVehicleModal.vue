@@ -1,5 +1,5 @@
 <template>
-  <div class="AddVehicleModal">
+  <div class="AddVehicleModal container-fluid">
     <div
       class="modal fade"
       id="add-vehicle"
@@ -81,14 +81,19 @@
                 />
               </div>
               <div class="form-group">
-                <label for="avatarSelection">Choose An Avatar</label>
-                <select multiple class="form-control row d-flex" v-model="state.selectedImage">
-                  <option :value="avatar" class="col-12" v-for="avatar in state.avatars" :key="avatar">
-                    {{ avatar }}
-                  </option>
-                </select>
-                <img :src="state.selectedImage" alt="">
-                <span class="bg-something" :style="{backgroundImage: 'url('+ state.selectedImage + ')'}"></span>
+                <label class="text-dark ml-5" for="avatarSelection">Choose An Avatar</label>
+                <div class="row d-flex justify-content-around">
+                  <div class="col-5 d-flex align-items-center">
+                    <select multiple class="form-control row d-flex" v-model="state.selectedImage">
+                      <option :value="avatar" class="col-12" v-for="avatar in state.avatars" :key="avatar">
+                        {{ avatar.replace('.png' || '.jpg', '') }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-5 justify-content-center">
+                    <img :src="'/avatars/' + state.selectedImage" class="img-fluid" alt="">
+                  </div>
+                </div>
               </div>
               <div class="modal-footer justify-content-center">
                 <button type="submit" class="btn btn-success">
@@ -124,14 +129,15 @@ export default {
       state,
       async createVehicle() {
         try {
-          const vehicleID = await vehicleService.createVehicle(state.newVehicle)
           $('#add-vehicle').modal('hide')
           state.newVehicle.creatorId = state.user._id
           state.newVehicle.owner = state.user._id
-          console.log(vehicleID)
+          state.newVehicle.avatar = state.selectedImage.toString()
+          logger.log(state.newVehicle)
+          const vehicleID = await vehicleService.createVehicle(state.newVehicle)
           router.push({ name: 'YourVehiclePage', params: { id: vehicleID } })
           state.newVehicle = {}
-          logger.log(AppState.vehicles)
+          state.selectedImage = ''
         } catch (error) {
           logger.log(error)
         }
@@ -145,5 +151,12 @@ export default {
 <style scoped>
 .bg-something {
   background-size: contain;
+}
+
+.avatar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 22vh;
 }
 </style>
