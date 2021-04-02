@@ -30,17 +30,17 @@
       <div class="row">
         <div class="col-12 text-center">
           <h2>Maintenance History Page</h2>
-          <button
-            type="submit"
-            class="btn btn-outline-primary mt-3"
-            data-target="#add-maintenance"
-            data-toggle="modal"
-            aria-hidden="true"
-            v-if="state.user.email===state.user.email"
-          >
-            <i class="fa fa-plus-square text-light" aria-hidden="true"></i> <span class="text-light ml-2">Add Maintenance</span>
-          </button>
           <div>
+            <button
+              type="submit"
+              class="btn btn-outline-primary mt-3"
+              data-target="#add-maintenance"
+              data-toggle="modal"
+              aria-hidden="true"
+              v-if="state.user.email===state.user.email"
+            >
+              <i class="fa fa-plus-square text-light" aria-hidden="true"></i> <span class="text-light ml-2">Add Maintenance</span>
+            </button>
           </div>
         </div>
       </div>
