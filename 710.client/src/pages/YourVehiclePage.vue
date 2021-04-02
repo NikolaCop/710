@@ -74,10 +74,10 @@
     </div>
     <div class="row mt-3 justify-content-center">
       <div class="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-6">
-        <div class="card card-holding-router-links p-2 bg-warning">
+        <div class="card card-holding-router-links p-2 bg-warning shadow-lg">
           <div class="row justify-content-around mt-3">
             <div class="col-11 text-center">
-              <div class="card shadow-lg maintenance-card p-2 bg-info animate__animated animate__fadeInLeft">
+              <div class="card shadow-lg maintenance-card p-2 bg-dark animate__animated animate__fadeInLeft">
                 <router-link
                   :to="{
                     name: 'MaintenanceHistoryPage',
@@ -101,12 +101,15 @@
           </div>
           <div class="row justify-content-around mt-2">
             <div class="col-11 text-center">
-              <div class="card shadow-lg  maintenance-card p-2 bg-danger animate__animated animate__fadeInRight">
-                <router-link :to="{ name: 'ActiveVehiclePage', params: { id: state.vehicle.id } }">
-                  <h6 class="text-light mt-1 pam-size">
-                    Sell Vehicle
-                  </h6>
-                </router-link>
+              <div v-if="state.vehicle.selling === false" class="card shadow-lg  maintenance-card p-2 bg-danger animate__animated animate__fadeInRight" @click="sellVehicle">
+                <h6 class="text-light mt-1 pam-size">
+                  Sell Vehicle
+                </h6>
+              </div>
+              <div v-else class="card shadow-lg  maintenance-card p-2 bg-danger animate__animated animate__fadeInRight" @click="stopSellingVehicle">
+                <h6 class="text-light mt-1 pam-size">
+                  Stop Selling Vehicle
+                </h6>
               </div>
             </div>
           </div>
@@ -183,6 +186,15 @@ export default {
           await vehicleService.archiveVehicle(route.params.id)
           router.push({ name: 'YourGaragePage' })
         }
+      },
+      async sellVehicle() {
+        state.vehicle.selling = true
+        await vehicleService.editVehicle(state.vehicle.id, state.vehicle)
+        router.push({ name: 'MarketplacePage' })
+      },
+      async stopSellingVehicle() {
+        state.vehicle.selling = false
+        await vehicleService.editVehicle(state.vehicle.id, state.vehicle)
       }
     }
   },
@@ -273,5 +285,12 @@ export default {
   margin-bottom: .4rem;
   border-radius: 4rem;
 }
+}
+  .car{
+    transition: all .2s;
+  }
+.car:hover{
+  transform: translateY(-5px);
+  cursor: pointer;
 }
 </style>

@@ -14,6 +14,7 @@ export const AppState = reactive({
   theme: true,
   loading: false,
   marketplace: true,
+  marketVehicles: {},
   // NOTE add the rest of the avatars to array
   avatars: [
     'charger.png', 'Hatchback.png', 'civic.png', 'classicConvertible.png', 'classicCoupe.png', 'classicHatch.jpg', 'ClassicTruck.jpg', 'convertible.png', 'Coupe.png', 'crossover.png', 'electric.png', 'Hatchback.png', 'honda.png', 'hypercar.png', 'jeep.png', 'Motorcycle.png', 'musclecar.png', 'Pickup.png', 'Sedan.png', 'spaceshuttle.png', 'SUV.png'

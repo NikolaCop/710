@@ -2,7 +2,9 @@
   <div class="container-fluid bg-dark">
     <div class="row justify-content-center mt-5">
       <div class="col-12 text-center  mt-2">
-        <h3 class="text-light">The Marketplace</h3>
+        <h3 class="text-light">
+          The Marketplace
+        </h3>
       </div>
     </div>
     <div class="row justify-content-center mt-1">
