@@ -1,11 +1,11 @@
 <template>
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <h6>Hello from the marketplace</h6>
+  <div class="container-fluid bg-dark">
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 text-center  mt-2">
+        <h3 class="text-light">The Marketplace</h3>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center mt-1">
       <SellVehicle v-for="vehicle in state.vehicles" :key="vehicle.id" :vehicle="vehicle" />
     </div>
   </div>
@@ -19,7 +19,7 @@ export default {
   name: 'MarketplacePage',
   setup() {
     const state = reactive({
-      vehicles: computed(() => AppState.vehicles),
+      vehicles: computed(() => AppState.marketVehicles),
       marketPlace: computed(() => AppState.marketPlace)
     })
     onMounted(async() => {
