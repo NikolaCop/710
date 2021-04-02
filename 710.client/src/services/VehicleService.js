@@ -15,7 +15,7 @@ class VehicleService {
   async getAllMarketVehicles() {
     try {
       const res = await api.get('api/vehicles/marketplace')
-      AppState.vehicles = res.data.filter(a => a.selling === true)
+      AppState.marketVehicles = res.data.filter(a => a.selling === true)
     } catch (error) {
       logger.log(error)
     }

@@ -1,11 +1,11 @@
 <template>
-  <tbody class="Maintenance">
+  <tbody class="maintenance">
     <tr>
-      <router-link :to="{name: 'MaintenanceDetailsPage', params: { id: maintenance.id }}">
-        <th scope="col">
+      <th scope="col">
+        <router-link :to="{name: 'MaintenanceDetailsPage', params: { id: maintenance.id }}">
           {{ maintenance.name }}
-        </th>
-      </router-link>
+        </router-link>
+      </th>
       <td scope="col">
         {{ maintenance.mileageAtDos }}
       </td>
@@ -14,6 +14,27 @@
       </td>
     </tr>
   </tbody>
+  <div>
+  </div>
+  <div class="container-fluid maintenance-large">
+    <div class="row justify-content-center mt-4">
+      <div class="col-11 text-center">
+        <div class="card bg-primary card-warning mt-2">
+          <div class="row justify-content-center">
+            <div class="col-11">
+              <div class="card bg-info card-info text-light shadow-lg">
+                <h6 class="maintenance-name text-light ml-2">
+                  <router-link :to="{name: 'MaintenanceDetailsPage', params: { id: maintenance.id }}">
+                    <span class="text-light mr-3">{{ maintenance.name }}</span> <span class="text-warning">{{ convertDate(maintenance.dos) }}</span>
+                  </router-link>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -51,3 +72,42 @@ export default {
   components: {}
 }
 </script>
+
+<style scoped>
+@media (max-width: 576px) {
+.maintenance{
+  display: none;
+}
+}
+@media (min-width: 576px) {
+.maintenance-large{
+  display: none;
+}
+}
+table,
+td {
+  border: 1px solid rgb(255, 255, 255);
+}
+th:nth-child(4) {
+  border-right: 1px solid rgb(255, 255, 255);
+}
+table,
+td {
+  border: 1px solid rgb(255, 255, 255);
+}
+th:nth-child(4) {
+  border-left: 1px solid rgb(255, 255, 255);
+}
+.card-warning{
+  height: 9.3vh;
+  border-radius: 1rem;
+}
+.card-info{
+  height: 6vh;
+  margin-top: .75rem;
+  border-radius: 1rem;
+}
+.maintenance-name{
+  margin-top: .75rem;
+}
+</style>

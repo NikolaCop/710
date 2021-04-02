@@ -1,6 +1,31 @@
 // **everything done to the vehilce in regards to maintenance**
 <template>
-  <div class="container-fluid bg-dark text-white">
+  <div class="container-fluid bg-dark text-white maintenance-large">
+    <div class="maintenance-history-page">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2>Maintenance History</h2>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            data-target="#add-maintenance"
+            data-toggle="modal"
+            aria-hidden="true"
+            v-if="state.user.email===state.user.email"
+          >
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+          </button>
+          <div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <Maintenance v-for="maintenance in state.maintenance" :key="maintenance.id" :maintenance="maintenance" />
+      </div>
+    </div>
+  </div>
+  <AddMaintenanceModal />
+  <div class="container-fluid bg-dark text-white maintenance">
     <div class="maintenance-history-page">
       <div class="row">
         <div class="col-12 text-center">
@@ -16,7 +41,6 @@
             <i class="fa fa-plus-square" aria-hidden="true"></i>
           </button>
           <div>
-            <AddMaintenanceModal />
           </div>
         </div>
       </div>
@@ -73,4 +97,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media (min-width: 576px) {
+.maintenance-large{
+  display: none;
+}
+}
+@media (max-width: 576px) {
+.maintenance{
+  display: none;
+}
+}
 </style>

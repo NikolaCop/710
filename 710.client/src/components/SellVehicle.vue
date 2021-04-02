@@ -1,16 +1,13 @@
 <template>
-  <div class="col-10 col-sm-10 col-md-8 col-lg-7 col-xl-4 mt-4 animate__animated animate__fadeInRight">
+  <div class="col-10 col-sm-10 col-md-8 col-lg-7 col-xl-4 mt-4  animate__animated animate__fadeInRight">
     <div class="card bg-primary p-4 card-vehicle-rounded">
       <div class="row justify-content-center">
         <div class="col-8 text-center">
-          <button class="btn btn-outline-light" @click="buyVehicle">
-            Buy
-          </button>
           <img src="../assets/img/porsche.png" class="img-vehicle card-img-top img-fluid animate__animated animate__fadeInLeft animate__delay-0.75s">
         </div>
         <div class="col-10 text-center animate__animated animate__fadeInUp animate__delay-0.75s">
-          <h6 class="text-light">
-            {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+          <h6 class="text-light text-size" @click="buyVehicle">
+            <span class="badge badge-info p-2 mr-1" @click="buyVehicle">Buy</span> {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
           </h6>
         </div>
       </div>
@@ -62,5 +59,8 @@ export default {
 }
 .car{
   transition: all .2s;
+}
+.text-size{
+  font-size: .8rem;
 }
 </style>
