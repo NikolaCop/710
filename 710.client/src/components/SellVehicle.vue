@@ -14,9 +14,9 @@
           class="col-10 text-center animate__animated animate__fadeInUp animate__delay-0.75s"
         >
           <h6 class="text-light text-size" @click="buyVehicle">
-            <span class="badge badge-success p-2 mr-1" @click="buyVehicle"
-              >Buy</span
-            >
+            <!-- <span class="badge badge-success p-2 mr-1" @click="buyVehicle" -->
+            <!-- >Buy</span
+            > -->
             {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
           </h6>
         </div>
@@ -44,9 +44,6 @@ export default {
     return {
       state,
       async buyVehicle() {
-        console.log(props.vehicle.ownerId)
-        console.log(props.vehicle)
-        console.log(props.vehicle.id)
         await vehicleService.buyVehicle(props.vehicle.id, props.vehicle)
         router.push({ name: 'YourGaragePage', params: { id: props.vehicle.id } })
       }

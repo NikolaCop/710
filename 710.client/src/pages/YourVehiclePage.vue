@@ -11,7 +11,10 @@
               </h6>
             </div>
             <div class="col-7 col-sm-7 col-md-6 col-lg-5 col-xl-4 text-center">
-              <img :src="'/avatars/' + state.vehicle.avatar" class="card-img-top img-fluid mt-2 animate__animated animate__fadeInLeft">
+              <img
+                :src="'/avatars/' + state.vehicle.avatar"
+                class="card-img-top img-fluid mt-2 animate__animated animate__fadeInLeft"
+              />
             </div>
           </div>
           <div class="row justify-content-center">
@@ -78,7 +81,8 @@
           class="card shadow-lg maintenance-card p-2 bg-primary animate__animated animate__fadeInUp"
         >
           <h6 class="text-light mt-1 pam-size">
-            Miles: {{ state.vehicle.mileage }} <span class="ml-4">VIN: {{ state.vehicle.vin }}</span>
+            Miles: {{ state.vehicle.mileage }}
+            <span class="ml-4">VIN: {{ state.vehicle.vin }}</span>
           </h6>
         </div>
       </div>
@@ -91,7 +95,6 @@
               <div
                 class="card shadow-lg maintenance-card p-2 bg-info animate__animated animate__fadeInLeft"
               >
-
                 <router-link
                   :to="{
                     name: 'MaintenanceHistoryPage',
@@ -117,15 +120,19 @@
           </div>
           <div class="row justify-content-around mt-2">
             <div class="col-11 text-center">
-              <div v-if="state.vehicle.selling === false" class="card shadow-lg  maintenance-card p-2 bg-danger animate__animated animate__fadeInRight" @click="sellVehicle">
-                <h6 class="text-light mt-1 pam-size">
-                  Sell Vehicle
-                </h6>
+              <div
+                v-if="state.vehicle.selling === false"
+                class="card shadow-lg maintenance-card p-2 bg-danger animate__animated animate__fadeInRight"
+                @click="sellVehicle"
+              >
+                <h6 class="text-light mt-1 pam-size">Sell Vehicle</h6>
               </div>
-              <div v-else class="card shadow-lg  maintenance-card p-2 bg-danger animate__animated animate__fadeInRight" @click="stopSellingVehicle">
-                <h6 class="text-light mt-1 pam-size">
-                  Stop Selling Vehicle
-                </h6>
+              <div
+                v-else
+                class="card shadow-lg maintenance-card p-2 bg-danger animate__animated animate__fadeInRight"
+                @click="stopSellingVehicle"
+              >
+                <h6 class="text-light mt-1 pam-size">Stop Selling Vehicle</h6>
               </div>
             </div>
           </div>
@@ -235,10 +242,32 @@ export default {
         }
       },
       async sellVehicle() {
-        state.vehicle.selling = true
-        await vehicleService.editVehicle(state.vehicle.id, state.vehicle)
-        router.push({ name: 'MarketplacePage' })
+        try {
+          Swal.fire({
+            title: 'Are you sure?',
+            text: '',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, sell my car!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Done!',
+                'Your car has been placed on the marketplace.',
+                'success'
+              )
+              state.vehicle.selling = true
+              vehicleService.editVehicle(state.vehicle.id, state.vehicle)
+              router.push({ name: 'MarketplacePage' })
+            }
+          })
+        } catch (error) {
+
+        }
       },
+
       async stopSellingVehicle() {
         state.vehicle.selling = false
         await vehicleService.editVehicle(state.vehicle.id, state.vehicle)
@@ -333,10 +362,10 @@ export default {
     border-radius: 4rem;
   }
 }
-  .car{
-    transition: all .2s;
-  }
-.car:hover{
+.car {
+  transition: all 0.2s;
+}
+.car:hover {
   transform: translateY(-5px);
   cursor: pointer;
 }
