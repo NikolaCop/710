@@ -1,8 +1,8 @@
 <template>
   <div class="records-page container-fluid">
     <div class="row">
-      <div class="col-12 text-center">
-        <h2>Records Page</h2>
+      <div class="col-12 text-center mt-5">
+        <h2>Files</h2>
         <button
           type="submit"
           class="btn btn-primary"
@@ -17,7 +17,7 @@
     </div>
     <div class="row justify-content-center mt-3">
       <div class="col-10">
-        <table class="table" id="recordsTable">
+        <table class="text-light table" id="recordsTable">
           <thead>
             <tr>
               <th scope="col">Title</th>
@@ -51,7 +51,7 @@ import { AppState } from '../AppState'
 import { recordsService } from '../services/RecordsService'
 import { useRoute } from 'vue-router'
 export default {
-  name: 'RecordsPage',
+  name: 'RecordsDetails',
   props: [],
   setup() {
     const route = useRoute()
@@ -82,3 +82,13 @@ export default {
   components: {}
 }
 </script>
+
+<style scoped>
+table,
+td {
+  border: 1px solid rgb(255, 255, 255);
+}
+th:nth-child(4) {
+  border-right: 1px solid rgb(255, 255, 255);
+}
+</style>
