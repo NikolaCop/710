@@ -2,6 +2,12 @@
   <div class="col-10 col-sm-10 col-md-8 col-lg-7 col-xl-4 mt-4 animate__animated animate__fadeInRight">
     <router-link :to="{name: 'YourVehiclePage', params: { id: vehicle.id }}">
       <div class="card bg-primary p-4 card-vehicle-rounded car">
+        <div class="row justify-content-end">
+          <div class="col-2">
+            <i class="fas fa-edit" type="button" id="change-avatar" data-toggle="modal" :data-target="'#change-avatar' + vehicle.id"></i>
+            <ChangeAvatarModal :vehicle="vehicle" />
+          </div>
+        </div>
         <div class="row justify-content-center">
           <div class="col-7 text-center">
             <img src="../assets/img/porsche.png" class="img-vehicle card-img-top img-fluid animate__animated animate__fadeInLeft animate__delay-0.75s">
@@ -47,6 +53,9 @@ export default {
 }
 </script>
 <style scoped>
+#change-avater {
+  z-index: 100;
+}
 #carPicButton {
   width: 530px;
   height: 280px;
