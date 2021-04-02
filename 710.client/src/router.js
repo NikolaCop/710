@@ -53,12 +53,6 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/recordspage/:id',
-    name: 'RecordsPage',
-    component: loadPage('RecordsPage'),
-    beforeEnter: authGuard
-  },
-  {
     path: '/marketplacepage',
     name: 'MarketplacePage',
     component: loadPage('MarketplacePage'),

@@ -13,11 +13,11 @@
       </td>
       <!-- adding a binding to data-target allows you to add in a unique id from your state -->
       <td
-        type="button"
         scope="col"
         data-toggle="modal"
         :data-target="'#view-record-' + record.id"
         @click="setActive"
+        id="hover-button"
       >
         View
       </td>
@@ -49,3 +49,9 @@ export default {
   components: {}
 }
 </script>
+
+<style scoped>
+#hover-button:hover {
+  cursor: pointer;
+}
+</style>
