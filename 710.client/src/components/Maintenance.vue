@@ -17,13 +17,13 @@
   <div>
   </div>
   <div class="container-fluid maintenance-large">
-    <div class="row justify-content-center mt-4">
+    <div class="row justify-content-center mt-2">
       <div class="col-11 text-center">
         <div class="card bg-primary card-warning mt-2">
           <div class="row justify-content-center">
             <div class="col-11">
-              <div class="card bg-info card-info text-light shadow-lg">
-                <h6 class="maintenance-name text-light ml-2">
+              <div class="card bg-info card-info text-light shadow-lg car">
+                <h6 class="maintenance-name mt-3 text-light ml-2">
                   <router-link :to="{name: 'MaintenanceDetailsPage', params: { id: maintenance.id }}">
                     <span class="text-light mr-3">{{ maintenance.name }}</span> <span class="text-warning">{{ convertDate(maintenance.dos) }}</span>
                   </router-link>
@@ -107,7 +107,14 @@ th:nth-child(4) {
   margin-top: .75rem;
   border-radius: 1rem;
 }
-.maintenance-name{
+/* .maintenance-name{
   margin-top: .75rem;
+} */
+.car:hover{
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+.car{
+  transition: all .2s;
 }
 </style>

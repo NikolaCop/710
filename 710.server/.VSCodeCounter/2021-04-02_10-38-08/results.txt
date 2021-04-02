@@ -1,0 +1,92 @@
+Date : 2021-04-02 10:38:08
+Directory : c:\source\codeworks\710\710.server
+Total : 46 files,  19149 codes, 131 comments, 1810 blanks, all 21090 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |          1 |      9,108 |          7 |      1,584 |     10,699 |
+| JSON       |          2 |      8,607 |          0 |          2 |      8,609 |
+| JavaScript |         34 |      1,030 |        104 |        152 |      1,286 |
+| SCSS       |          5 |        154 |          0 |         17 |        171 |
+| Markdown   |          1 |        114 |          0 |         29 |        143 |
+| TypeScript |          2 |         77 |         20 |         22 |        119 |
+| HTML       |          1 |         59 |          0 |          4 |         63 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                           | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                              |         46 |     19,149 |        131 |      1,810 |     21,090 |
+| client                                                                         |         18 |      9,565 |         41 |      1,653 |     11,259 |
+| client\@types                                                                  |          2 |         77 |         20 |         22 |        119 |
+| client\app                                                                     |          9 |        167 |         14 |         26 |        207 |
+| client\app\Controllers                                                         |          1 |         58 |          0 |          8 |         66 |
+| client\app\Services                                                            |          3 |         41 |          0 |          8 |         49 |
+| client\app\Utils                                                               |          2 |         36 |         14 |          3 |         53 |
+| client\assets                                                                  |          6 |      9,262 |          7 |      1,601 |     10,870 |
+| client\assets\scss                                                             |          5 |        154 |          0 |         17 |        171 |
+| client\assets\style                                                            |          1 |      9,108 |          7 |      1,584 |     10,699 |
+| server                                                                         |         22 |        760 |         87 |        114 |        961 |
+| server\controllers                                                             |          4 |        217 |          2 |         27 |        246 |
+| server\db                                                                      |          2 |         40 |          0 |          7 |         47 |
+| server\handlers                                                                |          1 |         23 |          6 |          4 |         33 |
+| server\models                                                                  |          4 |         89 |          2 |         16 |        107 |
+| server\services                                                                |          5 |        232 |         59 |         41 |        332 |
+| server\utils                                                                   |          4 |         84 |          9 |          7 |        100 |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                       | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\source\codeworks\710\710.server\.eslintrc.js                                | JavaScript |         24 |          0 |          2 |         26 |
+| c:\source\codeworks\710\710.server\Setup.js                                    | JavaScript |         76 |          1 |          9 |         86 |
+| c:\source\codeworks\710\710.server\client\@types\Auth0Provider.d.ts            | TypeScript |         50 |         20 |         16 |         86 |
+| c:\source\codeworks\710\710.server\client\@types\Axios.d.ts                    | TypeScript |         27 |          0 |          6 |         33 |
+| c:\source\codeworks\710\710.server\client\app\AppState.js                      | JavaScript |         22 |          0 |          3 |         25 |
+| c:\source\codeworks\710\710.server\client\app\AuthConfig.js                    | JavaScript |          3 |          0 |          1 |          4 |
+| c:\source\codeworks\710\710.server\client\app\Controllers\AuthController.js    | JavaScript |         58 |          0 |          8 |         66 |
+| c:\source\codeworks\710\710.server\client\app\Services\AccountService.js       | JavaScript |         14 |          0 |          3 |         17 |
+| c:\source\codeworks\710\710.server\client\app\Services\AuthService.js          | JavaScript |         21 |          0 |          3 |         24 |
+| c:\source\codeworks\710\710.server\client\app\Services\AxiosService.js         | JavaScript |          6 |          0 |          2 |          8 |
+| c:\source\codeworks\710\710.server\client\app\Utils\EventEmitter.js            | JavaScript |         30 |         14 |          2 |         46 |
+| c:\source\codeworks\710\710.server\client\app\Utils\isValidProp.js             | JavaScript |          6 |          0 |          1 |          7 |
+| c:\source\codeworks\710\710.server\client\app\main.js                          | JavaScript |          7 |          0 |          3 |         10 |
+| c:\source\codeworks\710\710.server\client\assets\scss\_overrides.scss          | SCSS       |          0 |          0 |          1 |          1 |
+| c:\source\codeworks\710\710.server\client\assets\scss\_variables.scss          | SCSS       |         43 |          0 |          4 |         47 |
+| c:\source\codeworks\710\710.server\client\assets\scss\custom.scss              | SCSS       |         22 |          0 |          2 |         24 |
+| c:\source\codeworks\710\710.server\client\assets\scss\loaders.scss             | SCSS       |         75 |          0 |          4 |         79 |
+| c:\source\codeworks\710\710.server\client\assets\scss\main.scss                | SCSS       |         14 |          0 |          6 |         20 |
+| c:\source\codeworks\710\710.server\client\assets\style\main.css                | CSS        |      9,108 |          7 |      1,584 |     10,699 |
+| c:\source\codeworks\710\710.server\client\index.html                           | HTML       |         59 |          0 |          4 |         63 |
+| c:\source\codeworks\710\710.server\index.js                                    | JavaScript |          3 |          2 |          1 |          6 |
+| c:\source\codeworks\710\710.server\package-lock.json                           | JSON       |      8,568 |          0 |          1 |      8,569 |
+| c:\source\codeworks\710\710.server\package.json                                | JSON       |         39 |          0 |          1 |         40 |
+| c:\source\codeworks\710\710.server\readme.md                                   | Markdown   |        114 |          0 |         29 |        143 |
+| c:\source\codeworks\710\710.server\server\Startup.js                           | JavaScript |         59 |          5 |          7 |         71 |
+| c:\source\codeworks\710\710.server\server\controllers\AccountController.js     | JavaScript |         19 |          0 |          3 |         22 |
+| c:\source\codeworks\710\710.server\server\controllers\MaintenanceController.js | JavaScript |         62 |          0 |          7 |         69 |
+| c:\source\codeworks\710\710.server\server\controllers\RecordsController.js     | JavaScript |         52 |          0 |          7 |         59 |
+| c:\source\codeworks\710\710.server\server\controllers\VehiclesController.js    | JavaScript |         84 |          2 |         10 |         96 |
+| c:\source\codeworks\710\710.server\server\db\DbConfig.js                       | JavaScript |         28 |          0 |          3 |         31 |
+| c:\source\codeworks\710\710.server\server\db\DbContext.js                      | JavaScript |         12 |          0 |          4 |         16 |
+| c:\source\codeworks\710\710.server\server\handlers\TestHandler.js              | JavaScript |         23 |          6 |          4 |         33 |
+| c:\source\codeworks\710\710.server\server\main.js                              | JavaScript |         16 |          4 |          5 |         25 |
+| c:\source\codeworks\710\710.server\server\models\Account.js                    | JavaScript |         13 |          1 |          3 |         17 |
+| c:\source\codeworks\710\710.server\server\models\Maintenance.js                | JavaScript |         28 |          0 |          5 |         33 |
+| c:\source\codeworks\710\710.server\server\models\Record.js                     | JavaScript |         23 |          1 |          4 |         28 |
+| c:\source\codeworks\710\710.server\server\models\Vehicle.js                    | JavaScript |         25 |          0 |          4 |         29 |
+| c:\source\codeworks\710\710.server\server\services\AccountService.js           | JavaScript |         65 |         38 |          8 |        111 |
+| c:\source\codeworks\710\710.server\server\services\MaintenanceService.js       | JavaScript |         33 |          4 |          9 |         46 |
+| c:\source\codeworks\710\710.server\server\services\RecordsService.js           | JavaScript |         30 |          0 |          6 |         36 |
+| c:\source\codeworks\710\710.server\server\services\SocketService.js            | JavaScript |         68 |         14 |          9 |         91 |
+| c:\source\codeworks\710\710.server\server\services\VehiclesService.js          | JavaScript |         36 |          3 |          9 |         48 |
+| c:\source\codeworks\710\710.server\server\utils\BaseController.js              | JavaScript |         13 |          0 |          2 |         15 |
+| c:\source\codeworks\710\710.server\server\utils\Errors.js                      | JavaScript |         30 |          0 |          1 |         31 |
+| c:\source\codeworks\710\710.server\server\utils\Logger.js                      | JavaScript |         29 |          3 |          2 |         34 |
+| c:\source\codeworks\710\710.server\server\utils\SocketHandler.js               | JavaScript |         12 |          6 |          2 |         20 |
+| Total                                                                          |            |     19,149 |        131 |      1,810 |     21,090 |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
