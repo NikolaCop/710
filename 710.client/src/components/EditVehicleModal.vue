@@ -66,17 +66,35 @@
                   class="form-control"
                   placeholder="Enter Mileage..."
                   aria-describedby="helpId"
+                  v-model="state.vehicle.mileage"
                 />
               </div>
-              <input
-                type="text"
-                name="vin"
-                id="vin"
-                class="form-control"
-                placeholder="Enter VIN..."
-                aria-describedby="helpId"
-                v-model="state.vehicle.vin"
-              />
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="vin"
+                  id="vin"
+                  class="form-control"
+                  placeholder="Enter VIN..."
+                  aria-describedby="helpId"
+                  v-model="state.vehicle.vin"
+                />
+              </div>
+              <div class="form-group">
+                <label class="text-dark" for="avatarSelection">Avatar</label>
+                <div class="row d-flex justify-content-around">
+                  <div class="col-5 d-flex align-items-center">
+                    <select multiple class="form-control row d-flex" v-model="state.selectedImage">
+                      <option :value="avatar" class="col-12" v-for="avatar in state.avatars" :key="avatar">
+                        {{ avatar.replace('.png' || '.jpg', '') }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-5 justify-content-center">
+                    <img :src="'/avatars/' + state.selectedImage" class="img-fluid" alt="">
+                  </div>
+                </div>
+              </div>
               <div class="modal-footer justify-content-center">
                 <button type="submit" class="btn btn-success">
                   Edit
@@ -100,7 +118,9 @@ export default {
   setup() {
     const state = reactive({
       user: computed(() => AppState.user),
-      vehicle: computed(() => AppState.activeVehicle)
+      vehicle: computed(() => AppState.activeVehicle),
+      avatars: AppState.avatars,
+      selectedImage: ''
     })
     return {
       state,
@@ -114,7 +134,8 @@ export default {
         } else {
           window.alert('Mileage Edit Must Be An Increase')
         }
-        await vehicleService.editVehicle(state.vehicle, state.vehicle.id)
+        state.vehicle.avatar = state.selectedImage.toString()
+        await vehicleService.editVehicle(state.vehicle.id, state.vehicle)
       }
     }
   }

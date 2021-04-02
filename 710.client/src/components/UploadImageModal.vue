@@ -11,7 +11,9 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-dark">Upload An Image</h5>
+            <h5 class="modal-title text-dark">
+              Upload An Image
+            </h5>
             <button
               type="button"
               class="close"
@@ -28,14 +30,14 @@
                 class="carousel slide"
                 data-ride="carousel"
               >
-                <div class="carousel-inner">
+                <div class="carousel-inner img-fluid">
                   <div
                     v-for="(image, index) in state.vehicle.images"
                     :key="image"
                     class="carousel-item"
                     :class="checkActive(index)"
                   >
-                    <img class="d-block w-100" :src="image" alt="First slide" />
+                    <img class="images" :src="image" alt="First slide" />
                   </div>
                 </div>
                 <a
@@ -71,7 +73,9 @@
                 @change="previewImage"
                 accept="image/*"
               />
-              <button @click="onUpload">Upload</button>
+              <button @click="onUpload">
+                Upload
+              </button>
             </div>
           </div>
         </div>
@@ -130,3 +134,40 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.modal-body {
+  height: auto;
+  width: auto;
+}
+@media (max-width: 376px) {
+  .images {
+  height: 50vh;
+  width: 50vh;
+}
+}
+@media (max-width: 576px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
+@media (max-width: 767.98px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
+@media (max-width: 991.98px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
+@media (min-width: 991.98px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
+</style>
