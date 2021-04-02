@@ -10,7 +10,7 @@
                 {{ state.vehicle.model }}
               </h6>
             </div>
-            <div class="col-7 col-sm-7 col-md-6 col-lg-5 col-xl-4 text-center">
+            <div class="col-7 col-sm-7 col-md-6 col-lg-5 col-xl-3 text-center">
               <img :src="'/avatars/' + state.vehicle.avatar" class="card-img-top img-fluid mt-2 animate__animated animate__fadeInLeft">
             </div>
           </div>
@@ -91,14 +91,15 @@
               <div
                 class="card shadow-lg maintenance-card p-2 bg-info animate__animated animate__fadeInLeft"
               >
-
                 <router-link
                   :to="{
                     name: 'MaintenanceHistoryPage',
                     params: { id: state.vehicle.id },
                   }"
                 >
-                  <h6 class="text-light mt-1 pam-size">Maintenance</h6>
+                  <h6 class="text-light mt-1 pam-size">
+                    Maintenance
+                  </h6>
                 </router-link>
               </div>
             </div>
@@ -147,7 +148,9 @@
                 class="card shadow-lg maintenance-card p-2 bg-primary animate__animated animate__fadeInUp"
               >
                 <router-link :to="{ name: 'MarketplacePage' }">
-                  <h6 class="text-light mt-1 pam-size">Marketplace</h6>
+                  <h6 class="text-light mt-1 pam-size">
+                    Marketplace
+                  </h6>
                 </router-link>
               </div>
             </div>
@@ -201,7 +204,7 @@ export default {
       vehicle: computed(() => AppState.activeVehicle)
     })
     const route = useRoute()
-    onMounted(async () => {
+    onMounted(async() => {
       await vehicleService.getVehicle(route.params.id)
       logger.log(AppState.activeVehicle)
     })

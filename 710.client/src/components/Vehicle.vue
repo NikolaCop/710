@@ -3,7 +3,7 @@
     <router-link :to="{name: 'YourVehiclePage', params: { id: vehicle.id }}">
       <div class="card bg-primary p-4 card-vehicle-rounded car">
         <div class="row justify-content-center">
-          <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-4 text-center">
+          <div class="col-7 col-sm-7 col-md-7 col-lg-6 col-xl-6 text-center">
             <img :src="'/avatars/' + vehicle.avatar" class="img-vehicle card-img-top img-fluid animate__animated animate__fadeInLeft animate__delay-0.75s">
           </div>
           <div class="col-10 text-center animate__animated animate__fadeInUp animate__delay-0.75s">

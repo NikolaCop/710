@@ -1,5 +1,25 @@
 <template>
-  <tbody class="record">
+  <div class="container-fluid maintenance-large">
+    <div class="col-12 text-center mb-3 mt-1">
+      <h6 class="pam-size">
+        <i class="fa fa-camera-retro mr-2 mt-2 text-primary"
+           data-toggle="modal"
+           :data-target="'#view-record-' + record.id"
+           @click="setActive"
+           id="hover-button"
+           aria-hidden="true"
+        ></i> {{ record.title }}
+      </h6>
+      <h6 class="pam-size text-primary">
+        {{ record.description }}
+      </h6>
+      <h6 class="pam-size">
+        {{ new Date(record.createdAt).toLocaleDateString() }}
+      </h6>
+    </div>
+    <ViewRecordsModal :record="record" />
+  </div>
+  <tbody class="record maintenance">
     <tr>
       <!-- NOTE create button that toggles modal to be able to view record details -->
       <td scope="col">
@@ -53,5 +73,30 @@ export default {
 <style scoped>
 #hover-button:hover {
   cursor: pointer;
+}
+@media (min-width: 576px) {
+.maintenance-large{
+  display: none;
+}
+}
+@media (max-width: 576px) {
+.maintenance{
+  display: none;
+}
+}
+@media (max-width: 576px) {
+.pam-size{
+  font-size: .8rem;
+}
+}
+@media (min-width: 767.98px) {
+.pam-size{
+  font-size: 1.5rem;
+}
+}
+@media (min-width: 991.98px) {
+.pam-size{
+  font-size: 2rem;
+}
 }
 </style>
