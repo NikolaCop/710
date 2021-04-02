@@ -2,24 +2,24 @@
 <template>
   <div class="container-fluid bg-dark text-white maintenance-large">
     <div class="maintenance-history-page">
-      <div class="row">
+      <div class="row mt-4">
         <div class="col-12 text-center">
-          <h2>Maintenance History</h2>
+          <h4>Maintenance History</h4>
           <button
             type="submit"
-            class="btn btn-primary"
+            class="btn btn-outline-primary mt-3"
             data-target="#add-maintenance"
             data-toggle="modal"
             aria-hidden="true"
             v-if="state.user.email===state.user.email"
           >
-            <i class="fa fa-plus-square" aria-hidden="true"></i>
+            <i class="fa fa-plus-square text-light" aria-hidden="true"></i> <span class="text-light ml-2">Add Maintenance</span>
           </button>
           <div>
           </div>
         </div>
       </div>
-      <div class="row justify-content-center mt-3">
+      <div class="row justify-content-center mt-1">
         <Maintenance v-for="maintenance in state.maintenance" :key="maintenance.id" :maintenance="maintenance" />
       </div>
     </div>
@@ -30,17 +30,17 @@
       <div class="row">
         <div class="col-12 text-center">
           <h2>Maintenance History Page</h2>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            data-target="#add-maintenance"
-            data-toggle="modal"
-            aria-hidden="true"
-            v-if="state.user.email===state.user.email"
-          >
-            <i class="fa fa-plus-square" aria-hidden="true"></i>
-          </button>
           <div>
+            <button
+              type="submit"
+              class="btn btn-outline-primary mt-3"
+              data-target="#add-maintenance"
+              data-toggle="modal"
+              aria-hidden="true"
+              v-if="state.user.email===state.user.email"
+            >
+              <i class="fa fa-plus-square text-light" aria-hidden="true"></i> <span class="text-light ml-2">Add Maintenance</span>
+            </button>
           </div>
         </div>
       </div>

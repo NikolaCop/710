@@ -7,6 +7,8 @@ import bootstrap from 'bootstrap'
 import jquery from 'jquery'
 import popper from 'popper.js'
 import firebase from 'firebase'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 const root = createApp(App)
 registerGlobalComponents(root)
@@ -24,5 +26,5 @@ firebase.initializeApp({
 export const storage = firebase.storage()
 
 root
-  .use(router, bootstrap, jquery, popper)
+  .use(router, bootstrap, jquery, popper, VueSweetalert2)
   .mount('#app')
