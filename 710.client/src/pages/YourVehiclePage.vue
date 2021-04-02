@@ -11,10 +11,7 @@
               </h6>
             </div>
             <div class="col-7 col-sm-7 col-md-6 col-lg-5 col-xl-4 text-center">
-              <img
-                src="../assets/img/porsche.png"
-                class="card-img-top img-fluid mt-2 animate__animated animate__fadeInLeft"
-              />
+              <img :src="'/avatars/' + state.vehicle.avatar" class="card-img-top img-fluid mt-2 animate__animated animate__fadeInLeft">
             </div>
           </div>
           <div class="row justify-content-center">
@@ -75,17 +72,13 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center mt-1">
-      <img :src="state.vehicle.images" alt="" />
-    </div>
     <div class="row justify-content-around mt-3">
       <div class="col-10 col-sm-10 col-md-8 col-lg-6 text-center">
         <div
           class="card shadow-lg maintenance-card p-2 bg-primary animate__animated animate__fadeInUp"
         >
           <h6 class="text-light mt-1 pam-size">
-            Miles {{ state.vehicle.mileage }}
-            <span class="ml-4">VIN # {{ state.vehicle.vin }}</span>
+            Miles: {{ state.vehicle.mileage }} <span class="ml-4">VIN: {{ state.vehicle.vin }}</span>
           </h6>
         </div>
       </div>
@@ -195,7 +188,7 @@ import { useRoute } from 'vue-router'
 import { logger } from '../services/utils/Logger'
 import router from '../router'
 import 'animate.css'
-import { animationService } from '../services/AnimationService'
+// import { animationService } from '../services/AnimationService'
 export default {
   name: 'YourVehiclePage',
   props: {
@@ -212,7 +205,6 @@ export default {
       await vehicleService.getVehicle(route.params.id)
       logger.log(AppState.activeVehicle)
     })
-    onMounted(async () => { await animationService.personalAutomation() })
     return {
       state,
       route,

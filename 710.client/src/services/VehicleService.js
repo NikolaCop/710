@@ -68,7 +68,7 @@ class VehicleService {
     try {
       const res = await api.put('api/vehicles/' + id, editedVehicleData)
       AppState.activeVehicle = res.data
-      AppState.vehicles[id] = res.data
+      // AppState.vehicles[id] = res.data
       this.getVehicle(id)
     } catch (error) {
       logger.log(error)

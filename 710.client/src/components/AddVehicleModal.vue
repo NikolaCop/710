@@ -86,7 +86,7 @@
                   <div class="col-5 d-flex align-items-center">
                     <select multiple class="form-control row d-flex" v-model="state.selectedImage">
                       <option :value="avatar" class="col-12" v-for="avatar in state.avatars" :key="avatar">
-                        {{ avatar.replace('.png' || '.jpg', '') }}
+                        {{ avatar.replace('.png', '') }}
                       </option>
                     </select>
                   </div>

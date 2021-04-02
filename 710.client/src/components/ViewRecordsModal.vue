@@ -1,5 +1,5 @@
 <template>
-  <div class="view-records-modal">
+  <div class="view-records-modal text-dark">
     <div
       class="modal fade"
       :id="'view-record-' + record.id"
@@ -11,7 +11,9 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Change this title later</h5>
+            <h5 class="modal-title">
+              Change this title later
+            </h5>
             <button
               type="button"
               class="close"
@@ -87,7 +89,9 @@
                   @change="previewImage"
                   accept="image/*"
                 />
-                <button @click="onUpload">Upload</button>
+                <button @click="onUpload">
+                  Upload
+                </button>
               </div>
             </div>
           </div>
@@ -151,5 +155,39 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.modal-body {
+  height: auto;
+  width: auto;
+}
+@media (max-width: 376px) {
+  .images {
+  height: 50vh;
+  width: 50vh;
+}
+}
+@media (max-width: 576px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
+@media (max-width: 767.98px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
+@media (max-width: 991.98px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
+@media (min-width: 991.98px) {
+  .images {
+  height: 50vh;
+  max-width: 50vh;
+}
+}
 </style>
