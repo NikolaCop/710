@@ -4,10 +4,10 @@
     <div class="maintenance-history-page">
       <div class="row mt-4">
         <div class="col-12 text-center">
-          <h4>Maintenance History</h4>
+          <h4 class="text-light" id="font">Maintenance History</h4>
           <button
             type="submit"
-            class="btn btn-outline-primary mt-3"
+            class="btn btn-outline-primary mt-3 animate__animated animate__fadeInLeft"
             data-target="#add-maintenance"
             data-toggle="modal"
             aria-hidden="true"
@@ -29,7 +29,7 @@
     <div class="maintenance-history-page">
       <div class="row">
         <div class="col-12 text-center">
-          <h2>Maintenance History Page</h2>
+          <h2 class="text-light">Maintenance History Page</h2>
           <div>
             <button
               type="submit"
@@ -106,5 +106,8 @@ export default {
 .maintenance{
   display: none;
 }
+}
+#font{
+  font-family: 'Orbitron', sans-serif!important;
 }
 </style>

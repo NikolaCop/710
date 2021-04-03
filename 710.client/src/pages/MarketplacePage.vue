@@ -2,7 +2,7 @@
   <div class="container-fluid bg-dark">
     <div class="row justify-content-center mt-5">
       <div class="col-12 text-center  mt-2">
-        <h3 class="text-light">
+        <h3 class="text-light" id="font">
           The Marketplace
         </h3>
       </div>
@@ -24,8 +24,8 @@ export default {
       vehicles: computed(() => AppState.marketVehicles),
       marketPlace: computed(() => AppState.marketPlace)
     })
-    onMounted(async() => {
-      await vehicleService.getAllMarketVehicles()
+    onMounted(() => {
+      vehicleService.getAllMarketVehicles()
     })
     return {
       state
@@ -36,5 +36,8 @@ export default {
 </script>
 
 <style>
+#font{
+  font-family: 'Orbitron', sans-serif!important;
+}
 
 </style>

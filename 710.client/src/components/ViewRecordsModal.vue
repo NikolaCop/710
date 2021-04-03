@@ -1,5 +1,5 @@
 <template>
-  <div class="view-records-modal text-dark">
+  <div class="view-records-modal text-info">
     <div
       class="modal fade"
       :id="'view-record-' + record.id"
@@ -189,5 +189,8 @@ export default {
   height: 50vh;
   max-width: 50vh;
 }
+}
+.text-info{
+  color: black!important;;
 }
 </style>

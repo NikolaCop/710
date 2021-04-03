@@ -3,7 +3,7 @@
     <div class="your-garage-page">
       <div class="row mt-4 justify-content-center">
         <div class="col-10 mb-3 text-center">
-          <h3 class="garage-size text-light">Your Garage</h3>
+          <h3 class="garage-size text-light" id="font">Your Garage</h3>
         </div>
         <div class="col-10 mb-3">
           <div class="row justify-content-center">
@@ -88,6 +88,9 @@ export default {
 .button-size{
   font-size: 1.4rem;
 }
+}
+#font{
+  font-family: 'Orbitron', sans-serif!important;
 }
 
 </style>

@@ -4,9 +4,9 @@
   <div class="container-fluid bg-dark maintenance-large">
     <div class="row mt-5">
       <div class="col-12 text-center">
-        <h2 class="text-light mb-3">
+        <h4 class="text-light mb-3 animate__animated animate__fadeInLeft animate__delay-.5s" id="font">
           {{ state.activeMaintenance.name }}
-        </h2>
+        </h4>
         <button
           type="submit"
           class="btn btn-outline-secondary"
@@ -30,18 +30,17 @@
     </div>
     <div class="row justify-content-center mt-4">
       <div class="col-10">
-        <div class="card bg-warning p-2 card-info">
+        <div class="card animate__animated animate__fadeInRight animate__delay-.75s bg-warning p-2 card-info">
           <div class="row justify-content-center">
-            <div class="col-9 m-2 p-3 bg-warning shadow-lg text-center text-info card-warning">
+            <div class="col-9 m-2 p-3 bg-warning  animate__animated animate__fadeInUp shadow-lg text-center text-info card-warning">
               <div class="col-12 mt-1 mb-3">
                 <h5><span class="badge badge-danger">Details</span></h5>
               </div>
               <h6 class="mt-2">
-                Date of Service:
                 {{ new Date(state.activeMaintenance.dos).toLocaleDateString() }}
               </h6>
               <h6 class="mt-2">
-                Mileage at Service: {{ state.activeMaintenance.mileageAtDos }}
+                {{ state.activeMaintenance.mileageAtDos }} Miles
               </h6>
               <h6 v-if="state.activeMaintenance.mileageDue" class="mt-2">
                 Recommended Change (Mileage):
@@ -50,11 +49,12 @@
               <h6 v-if="state.activeMaintenance.dateDue" class="mt-2">
                 Recommended Change (Date): {{ state.activeMaintenance.dateDue }}
               </h6>
+              <h5><span class="badge badge-primary">Additional Info</span></h5>
               <h6 v-for="info in state.activeMaintenance.additionalInfo"
                   :key="info"
                   class="mt-2"
               >
-                Additional Info: {{ info.text }}
+                {{ info.text }}
               </h6>
             </div>
             <RecordsDetails />
@@ -163,5 +163,8 @@ export default {
 }
 .card-warning{
   border-radius: 2rem;
+}
+#font{
+  font-family: 'Orbitron', sans-serif!important;
 }
 </style>

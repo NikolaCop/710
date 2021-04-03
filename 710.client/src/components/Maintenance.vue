@@ -19,10 +19,10 @@
   <div class="container-fluid maintenance-large">
     <div class="row justify-content-center mt-2">
       <div class="col-11 text-center">
-        <div class="card p-3 bg-primary card-warning mt-2">
+        <div class="card p-3 bg-primary card-warning mt-2 animate__animated animate__fadeInLeft">
           <div class="row justify-content-center">
             <div class="col-12">
-              <div class="card  p-2 bg-info card-info text-light shadow-lg car">
+              <div class="card  p-2 bg-info card-info text-light shadow-lg car animate__animated animate__fadeInRight">
                 <h6 class="maintenance-name mt-2 text-light ml-2">
                   <router-link :to="{name: 'MaintenanceDetailsPage', params: { id: maintenance.id }}">
                     <span class="text-light mr-3">{{ maintenance.name }}</span> <span class="text-warning">{{ convertDate(maintenance.dos) }}</span>

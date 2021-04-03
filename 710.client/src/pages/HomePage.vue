@@ -2,7 +2,7 @@
   <div class="container-fluid bg-dark" id="img-paint">
     <div class="row justify-content-center height-welcome">
       <div class="col-xs-12 text-center">
-        <h3 class="welcome-size text-light">
+        <h3 class="welcome-size text-light" id="font">
           Welcome to <b class="text-primary seventen"> 710 </b>
         </h3>
       </div>
@@ -38,13 +38,13 @@
           </button>
         </router-link>
       </div>
-      <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
+      <!-- <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
         <router-link :to="{name: 'Account', params: { id: id }}">
           <button type="button" class="btn btn-info text-font-weight button-size button-rounded-account">
             Account
           </button>
         </router-link>
-      </div>
+      </div> -->
     </div>
     <div v-else class="row button-row-height justify-content-center">
       <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 text-center">
@@ -109,6 +109,9 @@ span.fadeText{
 
 .vehicle-rounded{
   border-radius: 8rem;
+}
+#font{
+  font-family: 'Orbitron', sans-serif!important;
 }
 @media (max-width: 576px) {
 .height-welcome{

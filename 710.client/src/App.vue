@@ -26,4 +26,7 @@ export default {
 }
 </script>
 <style lang="scss">
+body{
+  font-family: 'Oxygen', sans-serif!important;
+}
 </style>

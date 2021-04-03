@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid maintenance-large">
     <div class="row justify-content-center">
-      <div class="col-9 text-center card-warning bg-warning shadow-lg mt-4">
+      <div class="col-9 animate__animated animate__fadeInUp animate__delay-1.5s  text-center card-warning bg-warning shadow-lg mt-4 mb-3">
         <h5><span class="badge badge-primary mt-2">Files</span></h5>
         <Records
           v-for="record in state.records"
