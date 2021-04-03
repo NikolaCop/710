@@ -13,10 +13,8 @@
         <div
           class="col-10 text-center animate__animated animate__fadeInUp animate__delay-0.75s"
         >
-          <h6 class="text-light text-size" @click="buyVehicle">
-            <!-- <span class="badge badge-success p-2 mr-1" @click="buyVehicle" -->
-            <!-- >Buy</span
-            > -->
+          <h6 class="text-light text-size">
+            <span class="badge badge-success p-2 mr-1" @click="buyVehicle">Buy</span>
             {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
           </h6>
         </div>

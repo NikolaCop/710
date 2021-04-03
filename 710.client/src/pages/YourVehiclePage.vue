@@ -238,13 +238,16 @@ export default {
                 'Your file has been archived.',
                 'success'
               )
-              vehicleService.archiveVehicle(route.params.id)
-              router.push({ name: 'YourGaragePage' })
+              this.archiveVehicleSecondary()
             }
           })
         } catch (error) {
-
+          logger.log(error)
         }
+      },
+      async archiveVehicleSecondary() {
+        await vehicleService.archiveVehicle(route.params.id)
+        router.push({ name: 'YourGaragePage' })
       },
       async sellVehicle() {
         try {
@@ -263,9 +266,7 @@ export default {
                 'Your car has been placed on the marketplace.',
                 'success'
               )
-              state.vehicle.selling = true
-              vehicleService.editVehicle(state.vehicle.id, state.vehicle)
-              router.push({ name: 'MarketplacePage' })
+              this.sellVehicleSecondary()
             }
           })
         } catch (error) {
@@ -276,6 +277,11 @@ export default {
       async stopSellingVehicle() {
         state.vehicle.selling = false
         await vehicleService.editVehicle(state.vehicle.id, state.vehicle)
+      },
+      async sellVehicleSecondary() {
+        state.vehicle.selling = true
+        await vehicleService.editVehicle(state.vehicle.id, state.vehicle)
+        router.push({ name: 'MarketplacePage' })
       }
     }
   },
@@ -373,5 +379,8 @@ export default {
 .car:hover {
   transform: translateY(-5px);
   cursor: pointer;
+}
+#font{
+  font-family: 'Orbitron', sans-serif!important;
 }
 </style>

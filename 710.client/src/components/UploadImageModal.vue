@@ -11,7 +11,7 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-dark">
+            <h5 class="modal-title text-light">
               Upload An Image
             </h5>
             <button
