@@ -11,15 +11,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-1 ml-3 text-center mt-3 text-light">
+      <div class="col-1 text-center mt-3 text-light">
         <router-link :to="{ name: 'Home' }">
-          <h3><i class="fa fa-home text-light " aria-hidden="true"></i></h3>
+          <h3><i class="fa fa-home text-light text-icon " aria-hidden="true"></i></h3>
         </router-link>
         <h4 v-if="state.theme === false">
-          <i class="fa fa-toggle-on text-secondary" @click="toggleTheme" aria-hidden="true"></i>
+          <i class="fa fa-toggle-on text-secondary text-icon" @click="toggleTheme" aria-hidden="true"></i>
         </h4>
         <h4 v-else>
-          <i class="fa fa-toggle-off text-secondary" @click="toggleTheme" aria-hidden="true"></i>
+          <i class="fa fa-toggle-off text-secondary text-icon" @click="toggleTheme" aria-hidden="true"></i>
         </h4>
       </div>
       <div class="col-2">
@@ -33,7 +33,7 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <i class="fa fa-user-circle text-icon" aria-hidden="true"></i>
             <span class="navbar-toggler-icon" />
           </button>
         </h1>
@@ -118,6 +118,29 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 576px) {
+.text-icon{
+  font-size: 1.2;
+}
+}
+@media (min-width: 576px) {
+.text-icon{
+  font-size: 1.25rem;
+  margin-left: .67rem;
+}
+}
+@media (min-width: 767.98px) {
+.text-icon{
+  font-size: 1.5rem;
+  margin-left: 2rem;
+}
+}
+@media (min-width: 991.98px) {
+.text-icon{
+  font-size: 1.75rem;
+  margin-left: 2.5rem;
+}
+}
 .dropdown-menu {
   user-select: none;
   display: block;
