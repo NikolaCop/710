@@ -73,7 +73,7 @@
                 @change="previewImage"
                 accept="image/*"
               />
-              <button @click="onUpload">
+              <button class="btn btn-danger" @click="onUpload">
                 Upload
               </button>
             </div>

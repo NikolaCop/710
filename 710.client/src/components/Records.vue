@@ -43,9 +43,28 @@
       >
         View
       </td>
-      <ViewRecordsModal :record="record" />
     </tr>
   </tbody>
+  <div class="container-fluid maintenance-large">
+    <div class="col-12 text-center mb-3 mt-1">
+      <h6 class="pam-size text-info">
+        <i class="fa fa-camera-retro mr-2 mt-2 text-primary"
+           data-toggle="modal"
+           :data-target="'#view-record-' + record.id"
+           @click="setActive"
+           id="hover-button"
+           aria-hidden="true"
+        ></i> {{ record.title }}
+      </h6>
+      <h6 class="pam-size text-primary">
+        {{ record.description }}
+      </h6>
+      <h6 class="pam-size text-info">
+        {{ new Date(record.createdAt).toLocaleDateString() }}
+      </h6>
+    </div>
+  </div>
+  <ViewRecordsModal :record="record" />
 </template>
 
 <script>
@@ -59,7 +78,8 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      user: computed(() => AppState.user)
+      user: computed(() => AppState.user),
+      record: computed(() => AppState.records)
     })
     return {
       state,
@@ -72,7 +92,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #hover-button:hover {
   cursor: pointer;
 }
