@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid maintenance-large">
     <div class="col-12 text-center mb-3 mt-1">
-      <h6 class="pam-size text-info">
+      <h6 class="pam-size text-dark">
         <i
           class="fa fa-camera-retro mr-2 mt-2 text-primary"
           data-toggle="modal"
@@ -10,10 +10,10 @@
           id="hover-button"
           aria-hidden="true"
         ></i>
-        {{ record.title }}
+        <b>{{ record.title }}</b>
       </h6>
-      <h6 class="pam-size text-dark">
-        <b> {{ record.description }}</b>
+      <h6 class="pam-size text-info">
+        {{ record.description }}
       </h6>
       <h6 class="pam-size text-info">
         {{ new Date(record.createdAt).toLocaleDateString() }}
