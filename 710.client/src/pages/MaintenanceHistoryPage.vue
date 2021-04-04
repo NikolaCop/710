@@ -11,16 +11,20 @@
             data-target="#add-maintenance"
             data-toggle="modal"
             aria-hidden="true"
-            v-if="state.user.email===state.user.email"
+            v-if="state.user.email === state.user.email"
           >
-            <i class="fa fa-plus-square text-light" aria-hidden="true"></i> <span class="text-light ml-2">Add Maintenance</span>
+            <i class="fa fa-plus-square text-light" aria-hidden="true"></i>
+            <span class="text-light ml-2">Add Maintenance</span>
           </button>
-          <div>
-          </div>
+          <div></div>
         </div>
       </div>
       <div class="row justify-content-center mt-1">
-        <Maintenance v-for="maintenance in state.maintenance" :key="maintenance.id" :maintenance="maintenance" />
+        <Maintenance
+          v-for="maintenance in state.maintenance"
+          :key="maintenance.id"
+          :maintenance="maintenance"
+        />
       </div>
     </div>
   </div>
@@ -37,9 +41,10 @@
               data-target="#add-maintenance"
               data-toggle="modal"
               aria-hidden="true"
-              v-if="state.user.email===state.user.email"
+              v-if="state.user.email === state.user.email"
             >
-              <i class="fa fa-plus-square text-light" aria-hidden="true"></i> <span class="text-light ml-2">Add Maintenance</span>
+              <i class="fa fa-plus-square text-light" aria-hidden="true"></i>
+              <span class="text-light ml-2">Add Maintenance</span>
             </button>
           </div>
         </div>
@@ -49,18 +54,16 @@
           <table class="table text-light" id="maintenanceTable">
             <thead>
               <tr>
-                <th scope="col">
-                  Service
-                </th>
-                <th scope="col">
-                  Mileage at Service
-                </th>
-                <th scope="col">
-                  Date of Service
-                </th>
+                <th scope="col">Service</th>
+                <th scope="col">Mileage at Service</th>
+                <th scope="col">Date of Service</th>
               </tr>
             </thead>
-            <Maintenance v-for="maintenance in state.maintenance" :key="maintenance.id" :maintenance="maintenance" />
+            <Maintenance
+              v-for="maintenance in state.maintenance"
+              :key="maintenance.id"
+              :maintenance="maintenance"
+            />
           </table>
         </div>
       </div>
@@ -84,7 +87,7 @@ export default {
       account: computed(() => AppState.account)
     })
 
-    onMounted(async() => {
+    onMounted(async () => {
       await vehicleService.getAllMaintenanceByVehicleId(route.params.id)
     })
     return {
@@ -97,15 +100,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (min-width: 576px) {
-.maintenance-large{
-  display: none;
+table,
+td {
+  border: 1px solid rgb(255, 255, 255);
 }
+@media (min-width: 576px) {
+  .maintenance-large {
+    display: none;
+  }
 }
 @media (max-width: 576px) {
-.maintenance{
-  display: none;
-}
+  .maintenance {
+    display: none;
+  }
 }
 #font{
   font-family: 'Orbitron', sans-serif!important;

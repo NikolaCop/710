@@ -11,9 +11,7 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">
-              Change this title later
-            </h5>
+            <h5 class="modal-title">File</h5>
             <button
               type="button"
               class="close"
@@ -89,9 +87,7 @@
                   @change="previewImage"
                   accept="image/*"
                 />
-                <button @click="onUpload">
-                  Upload
-                </button>
+                <button class="btn btn-danger" @click="onUpload">Upload</button>
               </div>
             </div>
           </div>
@@ -162,35 +158,35 @@ export default {
 }
 @media (max-width: 376px) {
   .images {
-  height: 50vh;
-  width: 50vh;
-}
+    height: 50vh;
+    width: 50vh;
+  }
 }
 @media (max-width: 576px) {
   .images {
-  height: 50vh;
-  max-width: 50vh;
-}
+    height: 50vh;
+    max-width: 50vh;
+  }
 }
 @media (max-width: 767.98px) {
   .images {
-  height: 50vh;
-  max-width: 50vh;
-}
+    height: 50vh;
+    max-width: 50vh;
+  }
 }
 @media (max-width: 991.98px) {
   .images {
-  height: 50vh;
-  max-width: 50vh;
-}
+    height: 50vh;
+    max-width: 50vh;
+  }
 }
 @media (min-width: 991.98px) {
   .images {
-  height: 50vh;
-  max-width: 50vh;
+    height: 50vh;
+    max-width: 50vh;
+  }
 }
-}
-.text-info{
-  color: black!important;;
+.text-info {
+  color: black !important;
 }
 </style>
