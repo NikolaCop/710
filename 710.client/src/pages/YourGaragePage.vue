@@ -7,7 +7,13 @@
         </div>
         <div class="col-10 mb-3">
           <div class="row justify-content-center">
-            <button class="btn btn-warning button-size card-rounded m-1" type="button" id="createVehicle" data-toggle="modal" data-target="#add-vehicle">
+            <button
+              class="btn btn-warning button-size card-rounded m-1"
+              type="button"
+              id="createVehicle"
+              data-toggle="modal"
+              data-target="#add-vehicle"
+            >
               <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Vehicle
             </button>
             <AddVehicleModal />
@@ -15,7 +21,11 @@
         </div>
       </div>
       <div class="row car justify-content-center">
-        <Vehicle v-for="vehicle in state.vehicles" :key="vehicle.id" :vehicle="vehicle" />
+        <Vehicle
+          v-for="vehicle in state.vehicles"
+          :key="vehicle.id"
+          :vehicle="vehicle"
+        />
       </div>
     </div>
   </div>
@@ -35,7 +45,7 @@ export default {
       vehicles: computed(() => AppState.vehicles)
     })
 
-    onMounted(async() => {
+    onMounted(async () => {
       await vehicleService.getAllVehicles()
     })
     return {
@@ -56,41 +66,40 @@ export default {
   width: 530px;
   height: 280px;
 }
-.card-rounded{
-  border-radius: .75rem;
+.card-rounded {
+  border-radius: 0.75rem;
 }
 @media (min-width: 576px) {
-.garage-size{
-  font-size: 1.75rem;
-}
+  .garage-size {
+    font-size: 1.75rem;
+  }
 }
 @media (min-width: 767.98px) {
-.garage-size{
-  font-size: 2.5rem;
-}
+  .garage-size {
+    font-size: 2.5rem;
+  }
 }
 @media (min-width: 991.98px) {
-.garage-size{
-  font-size: 3rem;
-}
+  .garage-size {
+    font-size: 3rem;
+  }
 }
 @media (min-width: 576px) {
-.button-size{
-  font-size: 1.2rem;
-}
+  .button-size {
+    font-size: 1.2rem;
+  }
 }
 @media (min-width: 767.98px) {
-.button-size{
-  font-size: 1.3rem;
-}
+  .button-size {
+    font-size: 1.3rem;
+  }
 }
 @media (min-width: 991.98px) {
-.button-size{
-  font-size: 1.4rem;
+  .button-size {
+    font-size: 1.4rem;
+  }
 }
+#font {
+  font-family: "Orbitron", sans-serif !important;
 }
-#font{
-  font-family: 'Orbitron', sans-serif!important;
-}
-
 </style>
