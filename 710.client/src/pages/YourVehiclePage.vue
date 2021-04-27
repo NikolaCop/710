@@ -11,11 +11,14 @@
               </h6>
             </div>
             <div class="col-7 col-sm-7 col-md-6 col-lg-5 col-xl-3 text-center">
-              <img :src="'/avatars/' + state.vehicle.avatar" class="card-img-top img-fluid mt-2 animate__animated animate__fadeInLeft">
+              <img
+                :src="'/avatars/' + state.vehicle.avatar"
+                class="card-img-top img-fluid mt-2 animate__animated animate__fadeInLeft"
+              />
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="col-10 ">
+            <div class="col-10">
               <div class="second-car-rounded">
                 <div class="row justify-content-center">
                   <div class="col-9 p-2 text-center">
@@ -34,7 +37,6 @@
                               ></i>
                             </button>
                           </div>
-                          <EditVehicleModal />
                           <div class="col-4">
                             <button
                               class="btn btn-outline-danger button animate__animated animate__fadeInRight"
@@ -59,7 +61,6 @@
                                 v-if="state.user.email === state.user.email"
                               ></i>
                             </button>
-                            <UploadImageModal />
                           </div>
                         </div>
                       </div>
@@ -98,9 +99,7 @@
                     params: { id: state.vehicle.id },
                   }"
                 >
-                  <h6 class="text-light mt-1 pam-size">
-                    Maintenance
-                  </h6>
+                  <h6 class="text-light mt-1 pam-size">Maintenance</h6>
                 </router-link>
               </div>
             </div>
@@ -124,18 +123,14 @@
                 class="card shadow-lg maintenance-card p-2 bg-danger animate__animated animate__fadeInRight"
                 @click="sellVehicle"
               >
-                <h6 class="text-light mt-1 pam-size">
-                  Sell Vehicle
-                </h6>
+                <h6 class="text-light mt-1 pam-size">Sell Vehicle</h6>
               </div>
               <div
                 v-else
                 class="card shadow-lg maintenance-card p-2 bg-danger animate__animated animate__fadeInRight"
                 @click="stopSellingVehicle"
               >
-                <h6 class="text-light mt-1 pam-size">
-                  Stop Selling Vehicle
-                </h6>
+                <h6 class="text-light mt-1 pam-size">Stop Selling Vehicle</h6>
               </div>
             </div>
           </div>
@@ -157,9 +152,7 @@
                 class="card shadow-lg maintenance-card p-2 bg-primary animate__animated animate__fadeInUp"
               >
                 <router-link :to="{ name: 'MarketplacePage' }">
-                  <h6 class="text-light mt-1 pam-size">
-                    Marketplace
-                  </h6>
+                  <h6 class="text-light mt-1 pam-size">Marketplace</h6>
                 </router-link>
               </div>
             </div>
@@ -190,6 +183,8 @@
       </div>
     </div>
   </div>
+  <UploadImageModal />
+  <EditVehicleModal />
 </template>
 
 <script>
@@ -213,7 +208,7 @@ export default {
       vehicle: computed(() => AppState.activeVehicle)
     })
     const route = useRoute()
-    onMounted(async() => {
+    onMounted(async () => {
       await vehicleService.getVehicle(route.params.id)
       logger.log(AppState.activeVehicle)
     })
@@ -380,7 +375,7 @@ export default {
   transform: translateY(-5px);
   cursor: pointer;
 }
-#font{
-  font-family: 'Orbitron', sans-serif!important;
+#font {
+  font-family: "Orbitron", sans-serif !important;
 }
 </style>

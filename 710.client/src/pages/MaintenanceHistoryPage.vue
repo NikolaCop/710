@@ -28,7 +28,6 @@
       </div>
     </div>
   </div>
-  <AddMaintenanceModal />
   <div class="container-fluid bg-dark text-white maintenance">
     <div class="maintenance-history-page">
       <div class="row">
@@ -69,6 +68,7 @@
       </div>
     </div>
   </div>
+  <AddMaintenanceModal />
 </template>
 
 <script>
@@ -114,7 +114,7 @@ td {
     display: none;
   }
 }
-#font{
-  font-family: 'Orbitron', sans-serif!important;
+#font {
+  font-family: "Orbitron", sans-serif !important;
 }
 </style>
