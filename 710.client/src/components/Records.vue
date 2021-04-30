@@ -1,11 +1,10 @@
 <template>
+  <!-- <ViewRecordsModal :record="record" /> -->
   <div class="container-fluid maintenance-large">
     <div class="col-12 text-center mb-3 mt-1">
       <h6 class="pam-size text-dark">
         <i
           class="fa fa-camera-retro mr-2 mt-2 text-primary"
-          data-toggle="modal"
-          :data-target="'#view-record-' + record.id"
           @click="setActive"
           id="hover-button"
           aria-hidden="true"
@@ -19,7 +18,6 @@
         {{ new Date(record.createdAt).toLocaleDateString() }}
       </h6>
     </div>
-    <ViewRecordsModal :record="record" />
   </div>
   <tbody class="record maintenance">
     <tr>
@@ -46,13 +44,13 @@
       </td>
     </tr>
   </tbody>
-  <ViewRecordsModal :record="record" />
 </template>
 
 <script>
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { recordsService } from '../services/RecordsService'
+import $ from 'jquery'
 export default {
   name: 'Records',
   props: {
@@ -67,6 +65,7 @@ export default {
       state,
       async setActive() {
         await recordsService.getRecordById(props.record.id)
+        await $('#view-record-' + props.record.id).modal('show')
       }
     }
   },

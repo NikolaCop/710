@@ -1,5 +1,7 @@
 // ** all Maintenance wihtin a single instance detailed **
 <template>
+  <AddRecordModal />
+  <ViewRecordsModal />
   <div class="container-fluid bg-dark maintenance-large">
     <div class="row mt-5">
       <div class="col-12 text-center">
@@ -74,7 +76,9 @@
     <div class="maintenance-details-page">
       <div class="row">
         <div class="col-12 text-center">
-          <h1 class="text-primary p-4">Maintenance Details Page</h1>
+          <h1 class="text-primary p-4">
+            Maintenance Details Page
+          </h1>
           <div>
             <button
               type="submit"
@@ -105,7 +109,9 @@
             </div>
           </div>
           <div class="col-12">
-            <h4 class="text-primary">Additional Info:</h4>
+            <h4 class="text-primary">
+              Additional Info:
+            </h4>
           </div>
           <div
             class="col-12"
@@ -139,7 +145,7 @@ export default {
       account: computed(() => AppState.account)
     })
 
-    onMounted(async () => {
+    onMounted(async() => {
       await maintenanceService.getMaintenanceById(route.params.id)
     })
     return {

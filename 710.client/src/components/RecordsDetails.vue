@@ -20,8 +20,7 @@
         <button
           type="submit"
           class="btn btn-primary"
-          data-target="#add-record"
-          data-toggle="modal"
+          @click="toggleAddRecord"
           aria-hidden="true"
         >
           <i class="fa fa-plus-square" aria-hidden="true"></i>
@@ -33,8 +32,12 @@
         <table class="text-light table" id="recordsTable">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Description</th>
+              <th scope="col">
+                Title
+              </th>
+              <th scope="col">
+                Description
+              </th>
               <th scope="col">
                 Date
                 <i
@@ -43,7 +46,9 @@
                   @click="sortByDate"
                 ></i>
               </th>
-              <th scope="col">View Record</th>
+              <th scope="col">
+                View Record
+              </th>
               <!-- make photos an icon that is clickable, that will pop up modal with all images -->
             </tr>
           </thead>
@@ -56,12 +61,12 @@
       </div>
     </div>
   </div>
-  <AddRecordModal />
 </template>
 
 <script>
 import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
+import $ from 'jquery'
 import { recordsService } from '../services/RecordsService'
 import { useRoute } from 'vue-router'
 export default {
@@ -74,22 +79,25 @@ export default {
       records: computed(() => AppState.records),
       sortDate: 'none'
     })
-    onMounted(async () => {
+    onMounted(async() => {
       await recordsService.getRecords(route.params.id)
     })
     return {
       state,
       sortByDate() {
         if (state.sortDate === 'none') {
-          state.records.sort(function (a, b) { return new Date(a.createdAt) - new Date(b.createdAt) })
+          state.records.sort(function(a, b) { return new Date(a.createdAt) - new Date(b.createdAt) })
           state.sortDate = 'first'
         } else if (state.sortDate === 'first') {
-          state.records.sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt) })
+          state.records.sort(function(a, b) { return new Date(b.createdAt) - new Date(a.createdAt) })
           state.sortDate = 'last'
         } else {
           recordsService.getRecords(state.maintenance.id)
           state.sortDate = 'none'
         }
+      },
+      async toggleAddRecord() {
+        await $('#add-record').modal('show')
       }
     }
   },

@@ -1,8 +1,8 @@
 <template>
-  <div class="view-records-modal text-info">
+  <div v-if="state.record != null" class="view-records-modal text-info">
     <div
       class="modal fade"
-      :id="'view-record-' + record.id"
+      :id="'view-record-' + state.record.id"
       tabindex="-1"
       role="dialog"
       aria-labelledby="modelTitleId"
